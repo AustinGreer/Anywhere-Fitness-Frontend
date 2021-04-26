@@ -1,8 +1,18 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getClasses } from '../redux/actions'
 
 function Home({ loading, dispatch }) {
+
+    useEffect(() => {
+        axios
+        .get('https://tt-33-anywhere-fitness.herokuapp.com/api/classes')
+        .then(res=>{
+            console.log(res.data)
+        })
+    },[])
+
     return (
         <div>
             <h1>Home</h1>
