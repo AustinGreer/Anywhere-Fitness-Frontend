@@ -29,7 +29,6 @@ const StyledCard = styled.section`
     font-size: 3rem;
     display: flex;
     font-family: sans-serif;
-
 `
 
 export default Class
