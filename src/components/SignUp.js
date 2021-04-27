@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import schema from './LoginSchema';
+import * as yup from 'yup';
 
 const initialSignUpValues = {
     username: '',
@@ -16,18 +18,33 @@ function SignUp() {
     const [signUpValues, setSetUpValues] = useState(initialSignUpValues)
     const [errorValues, setErrorValues] = useState(initialErrorValues)
     
-    function onChange(evt) {
-        const { name, value } = evt.target
-        setSetUpValues({
-            ...signUpValues,
-            [name]: value
-        })
+    const onChange = (event) => {
+        const { name, value } = event.target;
+        inputChange(name, value);
     }
     
-    
+    const inputChange = (name, value) => {
+
+        yup.reach(schema, name)
+            .validate(value)
+            .then(() => {
+                setErrorValues({ ...errorValues, [name]: '' })
+            })
+            .catch((err) => {
+                setErrorValues({ ...errorValues, [name]: err.errors[0] })
+            })
+
+
+        setSetUpValues({ ...signUpValues, [name]: value })
+    }
+
     return (
         <div>
-            <h1>Sign Up Component</h1>
+            <h1>Sign Up Page</h1>
+            <div className="errors">
+                            <div>{errorValues.username}</div>
+                            <div>{errorValues.password}</div>
+                        </div>
             <form className = 'form container'>
                 <label>Username:
                     <input
