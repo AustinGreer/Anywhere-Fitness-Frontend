@@ -10,7 +10,7 @@ function Dashboard(props) {
         <div>
             <h1>Dashboard</h1>
             <input type="text" placeholder="Search Classes"/>
-            {props.classes.map(item => <Class name={item.name} />)}
+            {props.classes.map((item,index) => <Class key={index}classes={item}/>)}
         </div>
     )
 }
