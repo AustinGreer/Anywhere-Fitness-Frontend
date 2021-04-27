@@ -47,6 +47,10 @@ table {
 	border-spacing: 0;
 }
 
+* {
+	font-size: 62.5%;
+}
+
 a {
 	padding:2%;
 }
