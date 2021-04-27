@@ -5,10 +5,12 @@ import SignUp from './components/SignUp';
 import Login from './components/Login';
 import Home from './components/Home';
 import Dashboard from './components/Dashboard';
+import NavBar from './components/NavBar';
 
 function App() {
   return (
     <div className="App">
+      <NavBar/>
       <Switch>
         <Route path='/signup' component={SignUp} />
         <Route path='/login' component={Login} />

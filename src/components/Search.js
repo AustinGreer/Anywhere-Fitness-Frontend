@@ -1,11 +1,11 @@
 import React from 'react'
 
-function ClassForm() {
+function Search() {
     return (
         <div>
-
+            
         </div>
     )
 }
 
-export default ClassForm
+export default Search

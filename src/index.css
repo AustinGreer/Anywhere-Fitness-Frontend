@@ -47,3 +47,24 @@ table {
 	border-spacing: 0;
 }
 
+* {
+	font-size: 62.5%;
+}
+
+a {
+	padding:2%;
+}
+
+div {
+	padding:2%;
+}
+
+input {
+	margin: 2%;
+}
+
+button{
+	margin: 2%;
+}
+
+p { padding: 2%;}
