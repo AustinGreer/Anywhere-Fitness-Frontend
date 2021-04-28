@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import schema from './LoginSchema';
+import schema from '../validation/LoginSchema';
 import * as yup from 'yup';
 
 const initialSignUpValues = {
