@@ -2,23 +2,38 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Class from './Class';
 import styled from 'styled-components';
+import {Link} from 'react-router-dom'
 
 
 
 
 function Dashboard(props) {
     return (
-        <div>
-            <h1>Dashboard</h1>
+        <StyledDashBoard>
+            <h2>Current Fitness Classes</h2>
             <input type="text" placeholder="Search Classes"/>
+            <Link to='/classform'>Add Class</Link>
             <StyledClasses>
             {props.classes.map((item,index) => (
                     <Class key={index}classes={item}/>
                     ))}
             </StyledClasses>
-        </div>
+        </StyledDashBoard>
     )
 }
+
+const StyledDashBoard = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4%;
+
+    h2 {
+        font-size: 4rem;
+        margin-bottom: 3%;
+    }
+`
+
 
 const StyledClasses = styled.div`
     display: flex;

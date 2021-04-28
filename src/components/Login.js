@@ -2,7 +2,35 @@ import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
 import axios from 'axios'
 import * as yup from 'yup'
-import schema from './LoginSchema'
+import schema from '../validation/LoginSchema'
+import styled from 'styled-components'
+
+const MainDiv = styled.div`
+background-image: url('https://images.unsplash.com/photo-1603077492340-e6e62b2a688b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');
+padding:20%;
+`
+
+const Tags = styled.div`
+font-size: 1.5rem;
+font-family:Courier New, monospace;
+`
+
+const Container = styled.div`
+padding: 5%;
+background-color: rgba(209, 208, 206, 0.7);
+
+`
+const Input = styled.input`
+display: flex;
+justify-content: center;
+`
+
+const Button = styled.button`
+margin: 2%;
+padding:0.5%;
+font-color: black;
+background-color: red;
+`
 
 function Login(props) {
 
@@ -43,7 +71,7 @@ function Login(props) {
     const formSubmit = (e) => {
         e.preventDefault();
 
-        axios.post('', form)
+        axios.post('https://tt-33-anywhere-fitness.herokuapp.com/api/login', form)
             .then(res => {
                 console.log(res.data)
                 localStorage.setItem('token', res.data.token);
@@ -66,8 +94,8 @@ function Login(props) {
     }
 
     return (
-        <div>
-            <div className="login">
+        <MainDiv>
+            <Container>
                 <div onSubmit={formSubmit}>
                     <div className="forms">
                         <div className="errors">
@@ -75,23 +103,23 @@ function Login(props) {
                             <div>{formError.password}</div>
                             <div>{formError.phoneNumber}</div>
                         </div>
-                        <label>Username</label>
-                        <input value={form.username}
+                        <Tags>Username</Tags>
+                        <Input value={form.username}
                             onChange={onChange}
                             name="username"
                             type="text" />
                     </div>
                     <div className="forms">
-                        <label>Password</label>
-                        <input value={form.password}
+                        <Tags>Password</Tags>
+                        <Input value={form.password}
                             onChange={onChange}
                             name="password"
                             type="text" />
                     </div>
-                    <button disabled={disabled}>Login</button>
+                    <Button disabled={disabled}>Login</Button>
                 </div>
-            </div>
-        </div>
+            </Container>
+        </MainDiv>
     )
 }
 
