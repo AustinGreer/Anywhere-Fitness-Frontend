@@ -47,7 +47,7 @@ function Home({ loading, dispatch }) {
     const BodyTextContainer = styled.div`
         width: 70%;
         padding: 0% 5%;
-        
+
     `
     const BodyPictureContainer1 = styled.div`
         display: flex;
@@ -91,7 +91,7 @@ function Home({ loading, dispatch }) {
                     <H1>Anywhere Fitness</H1>
                     <TopParagraph>These days, fitness classes can be held anywhere - a park, an unfinished basement or a garage - not just at a traditional gym. Certified fitness instructors need an easy way to take the awkwardness out of attendance taking and client payment processing.</TopParagraph>
                     <TopButton>Learn More</TopButton>
-                    
+
                 </TopContainer>
                 <MidContainer>
                     <H2>Below this is a big paragraph</H2>
@@ -125,7 +125,7 @@ function Home({ loading, dispatch }) {
                 </MidContainer>
                 <footer>
                 </footer>
-            </div>  
+            </div>
     )
 }
 
