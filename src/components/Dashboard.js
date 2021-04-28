@@ -18,13 +18,6 @@ function Dashboard(props) {
             <h2>Current Fitness Classes</h2>
             <input type="text" placeholder="Search Classes"/>
             <Link to='/classform'>Add Class</Link>
-            <div>
-            {props.classes.map(item => {
-                return (
-                        <h1>{item.name}</h1>
-                )
-            })}
-            </div>
         </StyledDashBoard>
     )
 }
