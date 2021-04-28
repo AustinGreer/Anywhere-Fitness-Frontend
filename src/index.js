@@ -8,14 +8,19 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { rootReducer } from './redux'
 import './index.css';
+import theme from './theme/index.js'
+import {ThemeProvider} from 'styled-components'
 
 
 const store = createStore(rootReducer,applyMiddleware(thunk))
 
 ReactDOM.render(
+ 
     <Router>
       <Provider store={store}>
-        <App />
+        <ThemeProvider theme = {theme}>
+          <App />
+        </ThemeProvider>
       </Provider>
     </Router>
     ,

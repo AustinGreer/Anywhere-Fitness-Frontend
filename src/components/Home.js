@@ -11,8 +11,58 @@ import deadlift from '../Images/deadlift.jpg'
 function Home({ loading, dispatch }) {
 
     const TopContainer = styled.div`
+        background-color: ${pr => pr.theme.primaryColor};
         color: white;
-        background-color: black;
+        padding: 10% 5%;
+    `
+    const TopParagraph = styled.p`
+        padding: 3% 0% 0%;
+        font-size: 1.3rem;
+        border-top: 2px white solid;
+    `
+    const TopButton = styled.button`
+        margin-top: 3%;
+        padding: 1% 1%;
+        color: white;
+        font-size: .9rem;
+        background-color: transparent;
+        border: 3px white solid;
+    `
+    const MidContainer = styled.div`
+        background-color: ${pr => pr.theme.secondaryColor};
+        color: white;
+        padding: 8% 5%;
+    `
+    const MidParagraph = styled.p`
+        padding: 2% 0% 0%;
+        font-size: 1.3rem;
+    `
+    const BodyPictureContainer = styled.div`
+        display: flex;
+        justify-content: space-between;
+        background-color: ${pr => pr.theme.fourthColor};
+        color: white;
+    `
+    const BodyTextContainer = styled.div`
+        width:45%
+    `
+    const BodyPictureContainer1 = styled.div`
+        display: flex;
+        justify-content: space-between;
+        background-color: ${pr => pr.theme.tertiaryColor};
+        color: white;
+    `
+    const H1 = styled.h1`
+        font-size: 3.3rem;
+        padding-bottom: 3%;
+    `
+    const H2 = styled.h2`
+        font-size: 2.8rem;
+        padding-bottom: 2%;
+        border-bottom: 1px white solid;
+    `
+    const H3 = styled.h3`
+        font-size: 2.2rem;
     `
 
     useEffect(() => {
@@ -30,47 +80,47 @@ function Home({ loading, dispatch }) {
                     {loading ? <h2>Loading...</h2> : <h2>Not Loading</h2>}
                 </div>
                 <TopContainer>
-                    <h1>Anywhere Fitness</h1>
-                    <p>THESE DAYS, FITNESS CLASSES CAN BE HELD ANYWHERE- A PARK, AN UNFINISHED BASEMENT OR A GARAGE- NOT JUST AT A TRADITIONAL GYM. CERTIFIED FITNESS INSTRUCTORS NEED AN EASY WAY TO TAKE THE AWKWARDNESS OUT OF ATTENDANCE TAKING AND CLIENT PAYMENT PROCESSING.</p>
-                    <button>Learn More</button>
+                    <H1>Anywhere Fitness</H1>
+                    <TopParagraph>These days, fitness classes can be held anywhere - a park, an unfinished basement or a garage - not just at a traditional gym. Certified fitness instructors need an easy way to take the awkwardness out of attendance taking and client payment processing.</TopParagraph>
+                    <TopButton>Learn More</TopButton>
                     
                 </TopContainer>
-                <div>
-                    <h2>Below this is a big paragraph</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare accumsan orci, eu molestie dui dignissim vitae. Donec luctus est vitae ligula eleifend, eu tincidunt magna dapibus. Maecenas non imperdiet purus. Praesent pharetra maximus interdum. Fusce vitae felis pulvinar, iaculis odio at, rhoncus augue.</p>
-                </div>
-                <div>
-                    <div>
-                        <h3>An h3 hehe</h3>
+                <MidContainer>
+                    <H2>Below this is a big paragraph</H2>
+                    <MidParagraph>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare accumsan orci, eu molestie dui dignissim vitae. Donec luctus est vitae ligula eleifend, eu tincidunt magna dapibus. Maecenas non imperdiet purus. Praesent pharetra maximus interdum. Fusce vitae felis pulvinar, iaculis odio at, rhoncus augue.</MidParagraph>
+                </MidContainer>
+                <BodyPictureContainer1>
+                    <BodyTextContainer>
+                        <H3>Sed amet aliquam</H3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare accumsan orci, eu molestie dui dignissim vitae. Donec luctus est vitae ligula eleifend, eu tincidunt magna dapibus. Maecenas non imperdiet purus. Praesent pharetra maximus interdum. Fusce vitae felis pulvinar, iaculis odio at, rhoncus augue.</p>
-                    </div>
+                    </BodyTextContainer>
                     <div>
                         <img src = {weights} alt = 'Your journey begins here'/>
                     </div>
-                </div>
-                <div>
+                </BodyPictureContainer1>
+                <BodyPictureContainer>
                     <div>
                         <img src = {deadlift} alt = 'Exercise'/>
                     </div>
                     <div>
-                        <h3>An h3 hehe</h3>
+                        <H3>Sed amet aliquam</H3>
                         <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
                     </div>
-                </div>
-                <div>
+                </BodyPictureContainer>
+                <BodyPictureContainer1>
                     <div>
-                        <h3>An h3 hehe</h3>
+                        <H3>Sed amet aliquam</H3>
                         <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
                     </div>
                     <div>
                         <img src = {lifting} alt = 'Lifting'/>
                     </div>
-                </div>
-                <div>
-                    <h2>WOAH an h2???? Again.. crazy.</h2>
+                </BodyPictureContainer1>
+                <MidContainer>
+                    <H2>WOAH an h2???? Again.. crazy.</H2>
                     <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus.</p>
                     <button>Get Started</button>
-                </div>
+                </MidContainer>
                 <footer>
                 </footer>
             </div>  
