@@ -17,12 +17,12 @@ const initialErrorValues = {
 function SignUp() {
     const [signUpValues, setSetUpValues] = useState(initialSignUpValues)
     const [errorValues, setErrorValues] = useState(initialErrorValues)
-    
+
     const onChange = (event) => {
         const { name, value } = event.target;
         inputChange(name, value);
     }
-    
+
     const inputChange = (name, value) => {
 
         yup.reach(schema, name)
