@@ -8,28 +8,43 @@ import styled from 'styled-components'
 const MainDiv = styled.div`
 background-image: url('https://images.unsplash.com/photo-1603077492340-e6e62b2a688b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');
 padding:20%;
+
 `
 
 const Tags = styled.div`
-font-size: 1.5rem;
-font-family:Courier New, monospace;
+font-size: 2rem;
+color: white;
 `
 
 const Container = styled.div`
-padding: 5%;
-background-color: rgba(209, 208, 206, 0.7);
-
+padding: 7% 25%;
+background-color: ${pr => pr.theme.primaryColor};
+opacity: 0.9;
 `
 const Input = styled.input`
-display: flex;
-justify-content: center;
+width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
 `
 
 const Button = styled.button`
-margin: 2%;
-padding:0.5%;
-font-color: black;
-background-color: red;
+padding: 14px 20px;
+margin: 8px 0;
+border: none;
+cursor: pointer;
+width: 100%;
+color: white;
+background-color: ${pr => pr.theme.secondaryColor};
+&: hover{
+    opacity: 0.8;   
+}
+`
+
+const Forms = styled.div`
+
 `
 
 function Login(props) {
@@ -97,7 +112,7 @@ function Login(props) {
         <MainDiv>
             <Container>
                 <div onSubmit={formSubmit}>
-                    <div className="forms">
+                    <Forms>
                         <div className="errors">
                             <div>{formError.username}</div>
                             <div>{formError.password}</div>
@@ -108,14 +123,14 @@ function Login(props) {
                             onChange={onChange}
                             name="username"
                             type="text" />
-                    </div>
-                    <div className="forms">
+                    </Forms>
+                    <Forms>
                         <Tags>Password</Tags>
                         <Input value={form.password}
                             onChange={onChange}
                             name="password"
                             type="text" />
-                    </div>
+                    </Forms>
                     <Button disabled={disabled}>Login</Button>
                 </div>
             </Container>
