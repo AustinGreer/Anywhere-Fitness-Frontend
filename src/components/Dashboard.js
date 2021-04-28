@@ -8,26 +8,37 @@ import styled from 'styled-components';
 
 function Dashboard(props) {
     return (
-        <div>
-            <h1>Dashboard</h1>
+        <StyledDashBoard>
+            <h2>Current Fitness Classes</h2>
             <input type="text" placeholder="Search Classes"/>
             <StyledClasses>
             {props.classes.map((item,index) => (
                     <Class key={index}classes={item}/>
                     ))}
             </StyledClasses>
-        </div>
+        </StyledDashBoard>
     )
 }
 
+const StyledDashBoard = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4%;
+
+    h2 {
+        font-size: 4rem;
+        margin-bottom: 3%;
+    }
+`
+
+
 const StyledClasses = styled.div`
-    background: #242943;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     row-wrap: wrap;
     width: 100%;
-    
 `
 
 const mapStateToProps = (state) => {return {classes: state.classes}}
