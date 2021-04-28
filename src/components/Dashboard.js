@@ -18,11 +18,13 @@ function Dashboard(props) {
             <h2>Current Fitness Classes</h2>
             <input type="text" placeholder="Search Classes"/>
             <Link to='/classform'>Add Class</Link>
-            {/* <StyledClasses>
-            {props.classes.map((item,index) => (
-                    <Class key={index}classes={item}/>
-                    ))}
-            </StyledClasses> */}
+            <div>
+            {props.classes.map(item => {
+                return (
+                        <h1>{item.name}</h1>
+                )
+            })}
+            </div>
         </StyledDashBoard>
     )
 }
