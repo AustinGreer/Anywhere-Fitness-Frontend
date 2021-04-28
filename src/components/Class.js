@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 function Class(props) {
     const { name, type, startTime, duration, intensityLevel, attendees, maxClassSize, location} = props.classes
-    
+
     return (
         <StyledCard>
             <h1>{name}</h1>

@@ -15,7 +15,7 @@ import {ThemeProvider} from 'styled-components'
 const store = createStore(rootReducer,applyMiddleware(thunk))
 
 ReactDOM.render(
- 
+
     <Router>
       <Provider store={store}>
         <ThemeProvider theme = {theme}>
