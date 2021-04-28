@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import weights from '../Images/weights.jpg'
 import lifting from '../Images/lifting.jpg'
 import deadlift from '../Images/deadlift.jpg'
-import Footer from './Footer.js'
+import Contact from './Contact.js'
 
 
 function Home({ loading, dispatch }) {
@@ -124,7 +124,7 @@ function Home({ loading, dispatch }) {
                     <TopParagraph>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus.</TopParagraph>
                     <Button href = '/signup'>Get Started</Button>
                 </MidContainer>
-                <Footer/>
+                <Contact />
             </div>  
     )
 }
