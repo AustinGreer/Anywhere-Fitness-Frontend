@@ -8,11 +8,11 @@ background-image: url('https://images.unsplash.com/photo-1603077492340-e6e62b2a6
 padding:20%;
 `
 
-const Title = styled.div`
+const Title = styled.h1`
 font-size: 3rem;
 `
 
-const Tags = styled.div`
+const Tags = styled.label`
 font-size: 1.5rem;
 font-family:Courier New, monospace;
 `
