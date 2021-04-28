@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import weights from '../Images/weights.jpg'
 import lifting from '../Images/lifting.jpg'
 import deadlift from '../Images/deadlift.jpg'
+import Footer from './Footer.js'
 
 
 function Home({ loading, dispatch }) {
@@ -16,17 +17,21 @@ function Home({ loading, dispatch }) {
         padding: 10% 5%;
     `
     const TopParagraph = styled.p`
-        padding: 3% 0% 0%;
+        padding: 3% 0% 3%;
         font-size: 1.3rem;
         border-top: 2px white solid;
     `
-    const TopButton = styled.button`
-        margin-top: 3%;
+    const Button = styled.a`
         padding: 1% 1%;
         color: white;
         font-size: .9rem;
         background-color: transparent;
         border: 3px white solid;
+        &:hover {
+            color: ${pr => pr.theme.hover};
+            border: 3px ${pr => pr.theme.hover} solid;
+            transition: .5s;
+        }
     `
     const MidContainer = styled.div`
         background-color: ${pr => pr.theme.secondaryColor};
@@ -83,17 +88,13 @@ function Home({ loading, dispatch }) {
 
     return (
             <div>
-                <div>
-                    <button onClick={() => dispatch({type: 'GET_CLASSES'})}>Click Me</button>
-                    {loading ? <h2>Loading...</h2> : <h2>Not Loading</h2>}
-                </div>
                 <TopContainer>
                     <H1>Anywhere Fitness</H1>
                     <TopParagraph>These days, fitness classes can be held anywhere - a park, an unfinished basement or a garage - not just at a traditional gym. Certified fitness instructors need an easy way to take the awkwardness out of attendance taking and client payment processing.</TopParagraph>
-                    <TopButton>Learn More</TopButton>
+                    <Button href = '#Learn'>Learn More</Button>
                     
                 </TopContainer>
-                <MidContainer>
+                <MidContainer id = 'Learn'>
                     <H2>Below this is a big paragraph</H2>
                     <MidParagraph>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna.</MidParagraph>
                 </MidContainer>
@@ -119,12 +120,11 @@ function Home({ loading, dispatch }) {
                     <Image src = {lifting} alt = 'Lifting'/>
                 </BodyPictureContainer1>
                 <MidContainer>
-                    <H2>WOAH an h2???? Again?.. crazy.</H2>
-                    <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus.</p>
-                    <TopButton>Get Started</TopButton>
+                    <H2>Woah an h2???? Again?.. crazy.</H2>
+                    <TopParagraph>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus.</TopParagraph>
+                    <Button href = '/signup'>Get Started</Button>
                 </MidContainer>
-                <footer>
-                </footer>
+                <Footer/>
             </div>  
     )
 }
