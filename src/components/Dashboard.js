@@ -21,6 +21,7 @@ function Dashboard(props) {
 }
 
 const StyledClasses = styled.div`
+    background: #242943;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
