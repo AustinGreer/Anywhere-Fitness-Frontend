@@ -27,6 +27,7 @@ const StyledClasses = styled.div`
     justify-content: space-evenly;
     row-wrap: wrap;
     width: 100%;
+    
 `
 
 const mapStateToProps = (state) => {return {classes: state.classes}}
