@@ -1,11 +1,15 @@
-import React, { useState } from 'react'
-import schema from './LoginSchema';
+import React, { useState } from 'react';
+import schema from '../validation/LoginSchema';
 import * as yup from 'yup';
 import styled from 'styled-components';
 
 const MainDiv = styled.div`
 background-image: url('https://images.unsplash.com/photo-1603077492340-e6e62b2a688b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');
 padding:20%;
+`
+
+const Title = styled.div`
+font-size: 3rem;
 `
 
 const Tags = styled.div`
@@ -68,7 +72,7 @@ function SignUp() {
     return (
         <MainDiv>
             <Container>
-                <h1>Sign Up Page</h1>
+                <Title>Sign Up Page</Title>
                 <div className="errors">
                                 <div>{errorValues.username}</div>
                                 <div>{errorValues.password}</div>
