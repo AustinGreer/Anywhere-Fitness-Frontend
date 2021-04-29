@@ -53,6 +53,7 @@ const StyledContainer = styled.section`
             border: 2px solid white;
             width: 15%;
             margin-right: 3%;
+            padding: 1%;
             background: #242943;
             color: white;
             font-size: 1.5rem;
@@ -70,8 +71,7 @@ const StyledClassInfo = styled.div`
 
     h3 {
         font-size: 3rem;
-        margin-bottom: 5%;
-        margin-right: 5%;
+        margin: 5% 5% 5% 0;
     }
 `
 

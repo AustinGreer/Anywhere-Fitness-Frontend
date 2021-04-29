@@ -51,6 +51,7 @@ export const addClasses = (data) => {
                     type: ADD_CLASSES_SUCCESS,
                     payload: res.data
                 })
+                
             })
             .catch(err => console.log(err))
     }
