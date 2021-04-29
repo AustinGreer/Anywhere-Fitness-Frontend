@@ -31,7 +31,7 @@ const InputEmail = styled.input`
     border: none;
     color: white;
     margin: 2%;
-    width: 52%;
+    width: 53%;
     font-size: 1rem;
 `
 const InputMessage = styled.textarea`
@@ -41,11 +41,23 @@ const InputMessage = styled.textarea`
     box-sizing: border-box;
     color: white;
     width: 100%;
-    height: 30vh;
+    height: 40vh;
     font-size: 1rem;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     resize: none;
 `
+const Button = styled.a`
+        padding: .5% 3%;
+        color: white;
+        font-size: .9rem;
+        background-color: transparent;
+        border: 3px white solid;
+        &:hover {
+            color: ${pr => pr.theme.hover};
+            border: 3px ${pr => pr.theme.hover} solid;
+            transition: .5s;
+        }
+    `
 
 function Contact() {
     return (
@@ -79,7 +91,8 @@ function Contact() {
                         name="message"
                         placeholder="Enter your name"
                     />
-                </Label>
+                </Label><br></br><br></br>
+                <Button>Send</Button>
             </div>
         </Form>
     )

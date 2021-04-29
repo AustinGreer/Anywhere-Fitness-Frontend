@@ -11,7 +11,67 @@ import Contact from './Contact.js'
 
 function Home({ loading, dispatch }) {
 
-    const TopContainer = styled.div`
+    useEffect(() => {
+        axios
+        .get('https://tt-33-anywhere-fitness.herokuapp.com/api/classes')
+        .then(res=>{
+            console.log(res.data)
+        })
+    },[])
+
+    return (
+            <div>
+                <TopContainer>
+                    <H1>Anywhere Fitness</H1>
+                    <TopParagraph>These days, fitness classes can be held anywhere - a park, an unfinished basement or a garage - not just at a traditional gym. Certified fitness instructors need an easy way to take the awkwardness out of attendance taking and client payment processing.</TopParagraph>
+                    <Button href = '#Learn'>Learn More</Button>
+                    
+                </TopContainer>
+                <MidContainer id = 'Learn'>
+                    <H2>Below this is a big paragraph</H2>
+                    <MidParagraph>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna.</MidParagraph>
+                </MidContainer>
+                <BodyPictureContainer1>
+                    <BodyTextContainer>
+                        <H3>Sed amet aliquam</H3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare accumsan orci, eu molestie dui dignissim vitae. Donec luctus est vitae ligula eleifend, eu tincidunt magna dapibus. Maecenas non imperdiet purus. Praesent pharetra maximus interdum. Fusce vitae felis pulvinar, iaculis odio at, rhoncus augue.</p>
+                    </BodyTextContainer>
+                    <Image src = {weights} alt = 'Your journey begins here'/>
+                </BodyPictureContainer1>
+                <BodyPictureContainer>
+                    <Image src = {deadlift} alt = 'Exercise'/>
+                    <BodyTextContainer>
+                        <H3>Sed amet aliquam</H3>
+                        <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
+                    </BodyTextContainer>
+                </BodyPictureContainer>
+                <BodyPictureContainer1>
+                    <BodyTextContainer>
+                        <H3>Sed amet aliquam</H3>
+                        <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
+                    </BodyTextContainer>
+                    <Image src = {lifting} alt = 'Lifting'/>
+                </BodyPictureContainer1>
+                <MidContainer>
+                    <H2>Woah an h2???? Again?.. crazy.</H2>
+                    <TopParagraph>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus.</TopParagraph>
+                    <Button href = '/signup'>Get Started</Button>
+                </MidContainer>
+                <footer>
+                    <div>
+                        <Contact />
+                    </div>
+                    <div className = 'logos'>
+
+                    </div>
+                </footer>
+            </div>  
+    )
+}
+
+const mapStateToProps = (state) => {return {loading: state.loading}}
+
+const TopContainer = styled.div`
         background-color: ${pr => pr.theme.primaryColor};
         color: white;
         padding: 10% 5%;
@@ -77,60 +137,5 @@ function Home({ loading, dispatch }) {
         font-size: 2.2rem;
         margin-bottom: 2%;
     `
-
-    useEffect(() => {
-        axios
-        .get('https://tt-33-anywhere-fitness.herokuapp.com/api/classes')
-        .then(res=>{
-            console.log(res.data)
-        })
-    },[])
-
-    return (
-            <div>
-                <TopContainer>
-                    <H1>Anywhere Fitness</H1>
-                    <TopParagraph>These days, fitness classes can be held anywhere - a park, an unfinished basement or a garage - not just at a traditional gym. Certified fitness instructors need an easy way to take the awkwardness out of attendance taking and client payment processing.</TopParagraph>
-                    <Button href = '#Learn'>Learn More</Button>
-                    
-                </TopContainer>
-                <MidContainer id = 'Learn'>
-                    <H2>Below this is a big paragraph</H2>
-                    <MidParagraph>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna.</MidParagraph>
-                </MidContainer>
-                <BodyPictureContainer1>
-                    <BodyTextContainer>
-                        <H3>Sed amet aliquam</H3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare accumsan orci, eu molestie dui dignissim vitae. Donec luctus est vitae ligula eleifend, eu tincidunt magna dapibus. Maecenas non imperdiet purus. Praesent pharetra maximus interdum. Fusce vitae felis pulvinar, iaculis odio at, rhoncus augue.</p>
-                    </BodyTextContainer>
-                    <Image src = {weights} alt = 'Your journey begins here'/>
-                </BodyPictureContainer1>
-                <BodyPictureContainer>
-                    <Image src = {deadlift} alt = 'Exercise'/>
-                    <BodyTextContainer>
-                        <H3>Sed amet aliquam</H3>
-                        <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
-                    </BodyTextContainer>
-                </BodyPictureContainer>
-                <BodyPictureContainer1>
-                    <BodyTextContainer>
-                        <H3>Sed amet aliquam</H3>
-                        <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
-                    </BodyTextContainer>
-                    <Image src = {lifting} alt = 'Lifting'/>
-                </BodyPictureContainer1>
-                <MidContainer>
-                    <H2>Woah an h2???? Again?.. crazy.</H2>
-                    <TopParagraph>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus.</TopParagraph>
-                    <Button href = '/signup'>Get Started</Button>
-                </MidContainer>
-                <Contact />
-            </div>  
-    )
-}
-
-
-
-const mapStateToProps = (state) => {return {loading: state.loading}}
 
 export default connect(mapStateToProps)(Home)
