@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { addClasses } from '../redux/actions';
+import { connect } from 'react-redux';
 
 const initialValues = {
     name: "",
@@ -22,7 +24,7 @@ const initialValues = {
 //     maxClassSize: ""
 // }
 
-function ClassForm() {
+function ClassForm(props) {
 
         const [values, setValues] = useState(initialValues)
         // const [errorValues, setErrorValues] = useState(initialErrValues)
@@ -37,8 +39,9 @@ function ClassForm() {
 
             const newClass = { 
                 ...values, 
-                
+                class_id: new Date()
             }
+            addClasses(newClass)
         }
 
     return (
@@ -48,7 +51,7 @@ function ClassForm() {
                             <div>{errorValues.username}</div>
                             <div>{errorValues.password}</div>
                         </div> */}
-            <form className = 'form container'>
+            <form className = 'form container' onSubmit={handleSubmit}>
                 <label>Name:
                     <input
                         type = 'text'
@@ -99,7 +102,7 @@ function ClassForm() {
                 </label>
                 <label>Attendees:
                     <input
-                        type = 'text'
+                        type = 'number'
                         value = {values.attendees}
                         onChange = {onChange}
                         name = 'attendees'
@@ -107,16 +110,22 @@ function ClassForm() {
                 </label>
                 <label>Max Class Size:
                     <input
-                        type = 'text'
+                        type = 'number'
                         value = {values.maxClassSize}
                         onChange = {onChange}
                         name = 'maxClassSize'
                     />
                 </label>
-                <button>Sign Up Now!</button>
+                <button>Add Class</button>
             </form>
         </div>
     )
 }
 
-export default ClassForm
+const mapStatesToProps = state => {
+    return {
+        addedClasses: state.addedClasses
+    }
+}
+
+export default connect(mapStatesToProps, { addClasses })(ClassForm)

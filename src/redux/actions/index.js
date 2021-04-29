@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export const GET_CLASSES = 'GET_CLASSES';
-export const ADD_CLASSES = 'ADD_CLASSES'
 export const ADD_CLASSES_START = 'ADD_CLASSES_START'
 export const ADD_CLASSES_SUCCESS = 'ADD_CLASSES_SUCCESS'
 export const ADD_CLASSES_FAILURE = 'ADD_CLASSES_FAILURE'
