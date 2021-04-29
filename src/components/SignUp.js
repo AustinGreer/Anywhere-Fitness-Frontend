@@ -13,25 +13,36 @@ font-size: 3rem;
 `
 
 const Tags = styled.label`
-font-size: 1.5rem;
-font-family:Courier New, monospace;
+font-size: 2rem;
+color: white;
 `
 
 const Container = styled.div`
-padding: 5%;
-background-color: rgba(209, 208, 206, 0.7);
+padding: 7% 25%;
+background-color: ${pr => pr.theme.primaryColor};
+opacity: 0.9;
 
 `
 const Input = styled.input`
-display: flex;
-justify-content: center;
+width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
 `
 
 const Button = styled.button`
-margin: 2%;
-padding:0.5%;
-font-color: black;
-background-color: red;
+padding: 14px 20px;
+margin: 8px 0;
+border: none;
+cursor: pointer;
+width: 100%;
+color: white;
+background-color: ${pr => pr.theme.secondaryColor};
+&: hover {
+    opacity: 0.8;
+}
 `
 
 const initialSignUpValues = {
@@ -72,7 +83,7 @@ function SignUp() {
     return (
         <MainDiv>
             <Container>
-                <Title>Sign Up Page</Title>
+                <Title>Sign Up Today!</Title>
                 <div className="errors">
                                 <div>{errorValues.username}</div>
                                 <div>{errorValues.password}</div>
@@ -94,7 +105,7 @@ function SignUp() {
                             name = 'password'
                         />
                     </Tags>
-                    <Tags>Code:
+                    <Tags>Code (FOR TRAINERS ONLY!):
                         <Input 
                             type = 'text'
                             value = {signUpValues.code}
