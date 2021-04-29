@@ -44,10 +44,11 @@ const StyledDashBoard = styled.div`
 
 const StyledClasses = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
     justify-content: space-evenly;
     row-wrap: wrap;
-    width: 100%;
+    width: 70%;
 `
 
 const mapStateToProps = (state) => {
