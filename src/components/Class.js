@@ -3,21 +3,14 @@ import styled from 'styled-components';
 
 
 function Class(props) {
-    const { name, type, startTime, duration, intensityLevel, attendees, maxClassSize, location} = props.classes
-
+    const {class_image, class_type, location, start_time} = props.item;
+    
     return (
         <StyledCard>
-            <h1>{name}</h1>
-            <ul>
-                <li>{type}</li>
-                <li>{startTime}</li>
-                <li>{duration}</li>
-                <li>{intensityLevel}</li>
-                <li>{location}</li>
-                <li>{attendees}</li>
-                <li>{maxClassSize}</li>
-            </ul>
-            <button>Reserve</button>
+            <img src={class_image} />
+            <h3>Type: {class_type}</h3>
+            <h3>Location: {location}</h3>
+            <h3>Start Time: {start_time}</h3>
         </StyledCard>
     )
 }
