@@ -6,16 +6,14 @@ import  styled  from 'styled-components'
 
 
 const initialValues = {
-    class_id: "",
     class_image: "",
     class_type: "",
-    duration: " ",
+    duration: "",
     intensity_level: "",
     location: "",
-    num_of_attendees: "",
-    start_time: " ",
-    max_class_size: "",
-    user_id: ""
+    num_of_attendees: 0,
+    start_time: "",
+    max_class_size: 0,
 }
 
 const StyledForm = styled.form`
@@ -47,7 +45,7 @@ function ClassForm(props) {
 
         const [values, setValues] = useState(initialValues)
         // const [errorValues, setErrorValues] = useState(initialErrValues)
-        const history = useHistory();
+        // const history = useHistory();
 
         const onChange = (event) => {
             const { name, value } = event.target;
@@ -59,7 +57,6 @@ function ClassForm(props) {
             const newClass = {...values}
             console.log(newClass)
             props.addClasses(newClass)
-            history.push("/dashboard")
         }
 
     return (
@@ -129,9 +126,9 @@ function ClassForm(props) {
                 <label>Attendees:
                     <input
                         type = 'number'
-                        value = {values.attendees}
+                        value = {values.num_of_attendees}
                         onChange = {onChange}
-                        name = 'attendees'
+                        name = 'num_of_attendees'
                     />
                 </label>
                 <label>Max Class Size:
@@ -149,12 +146,9 @@ function ClassForm(props) {
 }
 
 const mapStatesToProps = (state) => {
-    const { classes, loading, isLoggedIn, error } = state
+    const {  errors } = state
     return {
-        classes,
-        loading,
-        isLoggedIn,
-        error
+        errors: errors
     }
 }
 

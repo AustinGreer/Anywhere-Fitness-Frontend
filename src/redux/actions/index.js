@@ -43,10 +43,10 @@ export const getClassInfo = (id) => (dispatch) => {
 export const addClasses = (newClass) => (dispatch) =>{
     dispatch({type: ADD_CLASSES_START})
     axios
-    .post("https://tt-33-anywhere-fitness.herokuapp.com/api/classes", newClass)
-            .then(res => {
-                console.log(res)
-                dispatch({type: ADD_CLASSES_SUCCESS, payload: res.data})
+    .post("https://tt-33-anywhere-fitness.herokuapp.com/api/classes/", newClass)
+    .then(res => {
+        console.log(res)
+        dispatch({type: ADD_CLASSES_SUCCESS, payload: res})
             })
             .catch(err => console.log(err))
     }
