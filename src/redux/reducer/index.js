@@ -1,10 +1,10 @@
-import { DELETE_CLASSES_START, DELETE_CLASSES_SUCCESS, ADD_CLASSES_START, ADD_CLASSES_SUCCESS, GET_CLASSES_START, GET_CLASSES_SUCCESS } from '../actions'
+import { DELETE_CLASSES_START, DELETE_CLASSES_SUCCESS, ADD_CLASSES_START, ADD_CLASSES_SUCCESS, GET_CLASSES_START, GET_CLASSES_SUCCESS, GET_CLASSES_FAILURE } from '../actions'
 
 const initialState = {
     classes: [],
     isLoggedin:false,
     loading: false,
-    errors: false,
+    errors: '',
 }
 
 export function rootReducer( state = initialState, action){
@@ -13,15 +13,23 @@ export function rootReducer( state = initialState, action){
             return {
                 ...state,
                 loading: true,
-                errors: false
+                errors: ''
             }
         case GET_CLASSES_SUCCESS:
             return {
                 ...state,
                 classes: action.payload,
                 loading: false,
-                errors: false
+                errors: ''
             }
+
+        case GET_CLASSES_FAILURE:
+            return {
+                ...state,
+                loading: false,
+                errors: action.payload
+            }
+
             case ADD_CLASSES_START:
                 return {
                     ...state,

@@ -13,17 +13,23 @@ function Dashboard(props) {
         props.getClasses()
     }, [])
 
+    console.log(props.classes)
+
     return (
         <StyledDashBoard>
             <h2>Current Fitness Classes</h2>
             <input type="text" placeholder="Search Classes"/>
             <StyledLink to='/classform'>Add Class</StyledLink>
             <StyledClasses>
-                {props.classes && props.classes.map((item,index) => {
+                {props.loading && <h2>Loading Classes...</h2>}
+
+                {props.classes && props.classes.map((item) => {
                     return (
-                        <Class key={index} item={item} />
+                        <Class key={item.class_id} item={item} />
                     )
-                })}
+                }) }
+
+                {props.errors && <h2>{props.errors}</h2>}
             </StyledClasses>
         </StyledDashBoard>
     )
@@ -63,7 +69,9 @@ const StyledClasses = styled.div`
 
 const mapStateToProps = (state) => {
     return {
-        classes: state.classes
+        classes: state.classes,
+        loading: state.loading,
+        errors: state.errors
     }
 }
 

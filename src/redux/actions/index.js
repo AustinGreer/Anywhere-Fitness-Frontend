@@ -19,11 +19,10 @@ export const getClasses = () => {
             axios
                 .get('https://tt-33-anywhere-fitness.herokuapp.com/api/classes')
                 .then(res => {
-                    console.log(res)
                     dispatch({type: GET_CLASSES_SUCCESS, payload: res.data})
                 })
                 .catch(err => {
-                    console.log({err})
+                    dispatch({type: GET_CLASSES_FAILURE, payload: err.message})
                 })
         )
     }
