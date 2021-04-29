@@ -6,8 +6,9 @@ import deadlift from '../Images/deadlift.jpg';
 
 
 function Class(props) {
+
     const {class_image, class_type, location, start_time, class_id} = props.item;
-    
+
     return (
         <StyledCard>
             { class_image ? <StyledImg src={class_image} /> : <StyledImg src={deadlift} />}
