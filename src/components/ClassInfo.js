@@ -1,12 +1,16 @@
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
 import { getClassInfo } from '../redux';
 
 function ClassInfo(props) {
+    const { id } = useParams()
+
     useEffect(() => {
-        props.getClassInfo()
+        props.getClassInfo(id)
     }, [])
-    
+
     return (
         <div>
             {props.loading ? <h1>Loading Class Info...</h1> : ''}
