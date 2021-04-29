@@ -2,17 +2,17 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom'
-
 import { getClasses } from '../redux'
-
 import Class from './Class';
+
+
 
 
 function Dashboard(props) {
     useEffect(() => {
         props.getClasses()
     }, [])
-    
+
     return (
         <StyledDashBoard>
             <h2>Current Fitness Classes</h2>

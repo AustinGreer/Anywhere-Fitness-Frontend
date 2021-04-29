@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { addClasses } from '../redux/actions';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom'
+import  styled  from 'styled-components'
 
 
 const initialValues = {
+    class_id: "",
     class_image: "",
     class_type: "",
     duration: " ",
@@ -12,18 +14,33 @@ const initialValues = {
     location: "",
     num_of_attendees: "",
     start_time: " ",
-    max_class_size: ""
+    max_class_size: "",
+    user_id: ""
 }
 
+const StyledForm = styled.form`
+display:flex;
+flex-direction: column;
+padding: 2%;
+button{
+    width: 20%;
+}
+label{
+    padding:2%;
+}
+`
+
 // const initialErrValues = {
-//     name: "",
-//     type: "",
-//     startTime: " ",
+//     class_id: "",
+//     class_image: "",
+//     class_type: "",
 //     duration: " ",
-//     intensityLevel: "",
+//     intensity_level: "",
 //     location: "",
-//     attendees: "",
-//     maxClassSize: ""
+//     num_of_attendees: "",
+//     start_time: " ",
+//     max_class_size: "",
+//     user_id: ""
 // }
 
 function ClassForm(props) {
@@ -39,12 +56,10 @@ function ClassForm(props) {
 
         const handleSubmit = e => {
             e.preventDefault();
-            const newClass = {
-                ...values,
-                class_id: props.class_id
-            }
+            const newClass = {...values}
+            console.log(newClass)
             props.addClasses(newClass)
-            history.push("/classes")
+            history.push("/dashboard")
         }
 
     return (
@@ -54,7 +69,7 @@ function ClassForm(props) {
                             <div>{errorValues.username}</div>
                             <div>{errorValues.password}</div>
                         </div> */}
-            <form className = 'form container' onSubmit={handleSubmit}>
+            <StyledForm className = 'form container' onSubmit={handleSubmit}>
                 {/* <label>Name:
                     <input
                         type = 'text'
@@ -128,14 +143,18 @@ function ClassForm(props) {
                     />
                 </label>
                 <button>Add Class</button>
-            </form>
+            </StyledForm>
         </div>
     )
 }
 
-const mapStatesToProps = state => {
+const mapStatesToProps = (state) => {
+    const { classes, loading, isLoggedIn, error } = state
     return {
-        addedClasses: state.addedClasses
+        classes,
+        loading,
+        isLoggedIn,
+        error
     }
 }
 

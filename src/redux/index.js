@@ -1,3 +1,3 @@
 export { rootReducer } from './reducer'
 
-export { getClasses, getClassInfo} from './actions'
+export { getClasses, getClassInfo, addClasses} from './actions'
