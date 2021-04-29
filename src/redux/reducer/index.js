@@ -2,7 +2,9 @@ import { DELETE_CLASSES_START, DELETE_CLASSES_SUCCESS, ADD_CLASSES_START, ADD_CL
 
 const initialState = {
     classes: [],
-    isLoggedin:false,
+    addClass: [],
+    deleteClass: [],
+    isLoggedin: false,
     loading: false,
     errors: '',
 }
@@ -39,7 +41,7 @@ export function rootReducer( state = initialState, action){
                 return {
                     ...state,
                     loading:false,
-                    classes: action.payload
+                    addClass: action.payload
                 }
             case DELETE_CLASSES_START:
                 return {
@@ -47,9 +49,10 @@ export function rootReducer( state = initialState, action){
                     loading:true
                 }
             case DELETE_CLASSES_SUCCESS:
+                console.log(action.payload)
                 return {
                     ...state,
-                    classes: action.payload
+                    deleteClass: state.deleteClass.filter(classId => classId.class_id !== action.payload)
                 }
         default:
             return state
