@@ -83,7 +83,7 @@ function SignUp() {
     return (
         <MainDiv>
             <Container>
-                <Title>Sign Up Page</Title>
+                <Title>Sign Up Today!</Title>
                 <div className="errors">
                                 <div>{errorValues.username}</div>
                                 <div>{errorValues.password}</div>
@@ -105,7 +105,7 @@ function SignUp() {
                             name = 'password'
                         />
                     </Tags>
-                    <Tags>Code:
+                    <Tags>Code (FOR TRAINERS ONLY!):
                         <Input 
                             type = 'text'
                             value = {signUpValues.code}
