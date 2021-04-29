@@ -6,16 +6,17 @@ import reportWebVitals from './reportWebVitals';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import logger from 'redux-logger';
 import { rootReducer } from './redux'
 import './index.css';
 import theme from './theme/index.js'
 import {ThemeProvider} from 'styled-components'
 
 
-const store = createStore(rootReducer,applyMiddleware(thunk))
+const store = createStore(rootReducer,applyMiddleware(thunk, logger))
 
 ReactDOM.render(
- 
+
     <Router>
       <Provider store={store}>
         <ThemeProvider theme = {theme}>
