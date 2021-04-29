@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import deadlift from '../Images/deadlift.jpg'
+import deadlift from '../Images/deadlift.jpg';
 
 
 
 function Class(props) {
-    const {class_image, class_type, location, start_time} = props.item;
+    const {class_image, class_type, location, start_time, class_id} = props.item;
     
     return (
         <StyledCard>
@@ -14,7 +14,9 @@ function Class(props) {
             <h3>Type: {class_type}</h3>
             <h3>Location: {location}</h3>
             <h3>Start Time: {start_time}</h3>
-            <StyledAnchor to='/class/:id'>More Info</StyledAnchor>
+            <StyledAnchor to={`/class/${class_id}`}>
+                More Info
+            </StyledAnchor>
         </StyledCard>
     )
 }
