@@ -1,22 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import Class from './Class';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom'
 
+import { getClasses } from '../redux'
 
+import Class from './Class';
 
 
 function Dashboard(props) {
+    useEffect(() => {
+        props.getClasses()
+    }, [])
+    
     return (
         <StyledDashBoard>
             <h2>Current Fitness Classes</h2>
             <input type="text" placeholder="Search Classes"/>
-            <Link to='/classform'>Add Class</Link>
+            <StyledLink to='/classform'>Add Class</StyledLink>
             <StyledClasses>
-            {props.classes.map((item,index) => (
-                    <Class key={index}classes={item}/>
-                    ))}
+                {props.classes.map(item => {
+                    return (
+                        <Class key={item.class_id} item={item} />
+                    )
+                })}
             </StyledClasses>
         </StyledDashBoard>
     )
@@ -34,15 +41,30 @@ const StyledDashBoard = styled.div`
     }
 `
 
+const StyledLink = styled(Link)`
+    border: 0.15rem solid white;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+    margin-top: 2%;
+    margin-bottom: 3%;
+    padding: 1%;
+
+`
+
 
 const StyledClasses = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
     justify-content: space-evenly;
     row-wrap: wrap;
-    width: 100%;
+    width: 70%;
 `
 
-const mapStateToProps = (state) => {return {classes: state.classes}}
+const mapStateToProps = (state) => {
+    return {
+        classes: state.classes
+    }
+}
 
-export default connect(mapStateToProps)(Dashboard)
+export default connect(mapStateToProps, { getClasses })(Dashboard)

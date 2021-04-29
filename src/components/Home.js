@@ -1,14 +1,12 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { getClasses } from '../redux/actions';
 import styled from 'styled-components'
 import weights from '../Images/weights.jpg'
 import lifting from '../Images/lifting.jpg'
 import deadlift from '../Images/deadlift.jpg'
 
 
-function Home({ loading, dispatch }) {
+function Home() {
 
     const TopContainer = styled.div`
         background-color: ${pr => pr.theme.primaryColor};
@@ -83,10 +81,6 @@ function Home({ loading, dispatch }) {
 
     return (
             <div>
-                <div>
-                    <button onClick={() => dispatch({type: 'GET_CLASSES'})}>Click Me</button>
-                    {loading ? <h2>Loading...</h2> : <h2>Not Loading</h2>}
-                </div>
                 <TopContainer>
                     <H1>Anywhere Fitness</H1>
                     <TopParagraph>These days, fitness classes can be held anywhere - a park, an unfinished basement or a garage - not just at a traditional gym. Certified fitness instructors need an easy way to take the awkwardness out of attendance taking and client payment processing.</TopParagraph>
@@ -131,6 +125,5 @@ function Home({ loading, dispatch }) {
 
 
 
-const mapStateToProps = (state) => {return {loading: state.loading}}
 
-export default connect(mapStateToProps)(Home)
+export default Home;
