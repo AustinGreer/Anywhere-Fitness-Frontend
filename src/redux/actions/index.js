@@ -49,7 +49,7 @@ export const addClasses = (newClass) => (dispatch) =>{
                     type: ADD_CLASSES_SUCCESS,
                     payload: res.data
                 })
-                
+
                 console.log(res)
                 dispatch({type: ADD_CLASSES_SUCCESS, payload: res.data})
             })

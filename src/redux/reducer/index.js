@@ -31,7 +31,7 @@ export function rootReducer( state = initialState, action){
                 return {
                     ...state,
                     loading:false,
-                    addedClasses: action.payload,
+                    classes: action.payload
                 }
         default:
             return state

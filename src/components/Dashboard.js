@@ -19,9 +19,9 @@ function Dashboard(props) {
             <input type="text" placeholder="Search Classes"/>
             <StyledLink to='/classform'>Add Class</StyledLink>
             <StyledClasses>
-                {props.classes.map(item => {
+                {props.classes && props.classes.map((item,index) => {
                     return (
-                        <Class item={item} />
+                        <Class key={index} item={item} />
                     )
                 })}
             </StyledClasses>
