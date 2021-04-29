@@ -2,6 +2,7 @@ import { GET_CLASSES_START ,GET_CLASSES_SUCCESS } from '../actions'
 
 const initialState = {
     classes: [],
+    addedClasses: [],
     isLoggedin:false,
     loading: false,
     errors: false,
