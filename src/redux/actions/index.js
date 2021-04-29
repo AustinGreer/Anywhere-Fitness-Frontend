@@ -12,15 +12,19 @@ export const getClasses = () => {
         dispatch({type: GET_CLASSES_START})
         return (
             axios
-            .get('https://tt-33-anywhere-fitness.herokuapp.com/api/classes')
-            .then(res => {
-                dispatch({ type: GET_CLASSES_SUCCESS, payload: res.data})
-            })
-            .catch(err => {
-                console.log({err})
-            })
+                .get('https://tt-33-anywhere-fitness.herokuapp.com/api/classes')
+                .then(res => {
+                    dispatch({ type: GET_CLASSES_SUCCESS, payload: res.data})
+                })
+                .catch(err => {
+                    console.log({err})
+                })
         )
     }
+}
+
+export const getClassInfo = () => (dispatch) => {
+    dispatch({type: GET_CLASSES_START})
 }
 
 export const addClasses = (data) => {
