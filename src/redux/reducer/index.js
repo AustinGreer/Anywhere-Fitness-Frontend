@@ -1,4 +1,4 @@
-import { GET_CLASSES, ADD_CLASSES_START, ADD_CLASSES_SUCCESS } from '../actions'
+import { GET_CLASSES_START ,GET_CLASSES_SUCCESS } from '../actions'
 
 const initialState = {
     classes: [],
@@ -10,12 +10,19 @@ const initialState = {
 
 export function rootReducer( state = initialState, action){
     switch(action.type){
-        case GET_CLASSES:
-            return {...state, loading: !state.loading, classes: action.payload}
-        case ADD_CLASSES_SUCCESS:
+        case GET_CLASSES_START:
             return {
                 ...state,
-                addedClasses: action.payload
+                loading: true,
+                errors: false
+            }
+        
+        case GET_CLASSES_SUCCESS:
+            return {
+                ...state, 
+                classes: action.payload,
+                loading: false,
+                errors: false 
             }
         default:
             return state
