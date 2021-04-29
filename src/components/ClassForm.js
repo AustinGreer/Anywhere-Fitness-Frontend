@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { addClasses } from '../redux/actions';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom'
+
 
 const initialValues = {
-    name: "",
-    type: "",
-    startTime: " ",
+    class_image: "",
+    class_type: "",
     duration: " ",
-    intensityLevel: "",
+    intensity_level: "",
     location: "",
-    attendees: "",
-    maxClassSize: ""
+    num_of_attendees: "",
+    start_time: " ",
+    max_class_size: ""
 }
 
 // const initialErrValues = {
@@ -28,6 +30,7 @@ function ClassForm(props) {
 
         const [values, setValues] = useState(initialValues)
         // const [errorValues, setErrorValues] = useState(initialErrValues)
+        const history = useHistory();
 
         const onChange = (event) => {
             const { name, value } = event.target;
@@ -36,12 +39,12 @@ function ClassForm(props) {
 
         const handleSubmit = e => {
             e.preventDefault();
-
-            const newClass = { 
-                ...values, 
-                class_id: new Date()
+            const newClass = {
+                ...values,
+                class_id: props.class_id
             }
-            addClasses(newClass)
+            props.addClasses(newClass)
+            history.push("/classes")
         }
 
     return (
@@ -52,28 +55,36 @@ function ClassForm(props) {
                             <div>{errorValues.password}</div>
                         </div> */}
             <form className = 'form container' onSubmit={handleSubmit}>
-                <label>Name:
+                {/* <label>Name:
                     <input
                         type = 'text'
                         value = {values.name}
                         onChange = {onChange}
                         name = 'name'
                     />
-                </label>
+                </label> */}
                 <label>Type:
                     <input
                         type = 'text'
-                        value = {values.type}
+                        value = {values.class_type}
                         onChange = {onChange}
-                        name = 'type'
+                        name = 'class_type'
+                    />
+                </label>
+                <label>Image:
+                    <input
+                        type = 'text'
+                        value = {values.class_image}
+                        onChange = {onChange}
+                        name = 'class_image'
                     />
                 </label>
                 <label>Start Time:
                     <input
                         type = 'text'
-                        value = {values.startTime}
+                        value = {values.start_time}
                         onChange = {onChange}
-                        name = 'startTime'
+                        name = 'start_time'
                     />
                 </label>
                 <label>Duration:
@@ -87,9 +98,9 @@ function ClassForm(props) {
                 <label>Intensity Level:
                     <input
                         type = 'text'
-                        value = {values.intensityLevel}
+                        value = {values.intensity_level}
                         onChange = {onChange}
-                        name = 'intensityLevel'
+                        name = 'intensity_level'
                     />
                 </label>
                 <label>Location:
@@ -111,9 +122,9 @@ function ClassForm(props) {
                 <label>Max Class Size:
                     <input
                         type = 'number'
-                        value = {values.maxClassSize}
+                        value = {values.max_class_size}
                         onChange = {onChange}
-                        name = 'maxClassSize'
+                        name = 'max_class_size'
                     />
                 </label>
                 <button>Add Class</button>

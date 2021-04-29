@@ -39,11 +39,7 @@ export const getClassInfo = (id) => (dispatch) => {
 }
 
 export const addClasses = (data) => {
-    return (dispatch) => {  
-        dispatch({
-            type: ADD_CLASSES_START
-        })
-
+    return (dispatch) => {
         axios
             .post("https://tt-33-anywhere-fitness.herokuapp.com/api/classes", data)
             .then(res => {
