@@ -60,13 +60,14 @@ export const addClasses = (newClass) => (dispatch) =>{
             .catch(err => console.log(err))
     }
 
-export const deleteClasses = (item) => (dispatch) => {
+export const deleteClasses = (id) => (dispatch) => {
         dispatch({type: DELETE_CLASSES_START})
         return (
             axios
-                .delete(`https://tt-33-anywhere-fitness.herokuapp.com/api/classes/${item.id}`)
+                .delete(`https://tt-33-anywhere-fitness.herokuapp.com/api/classes/${id}`)
                 .then(res => {
-                    dispatch({ type: DELETE_CLASSES_SUCCESS, payload: res.data})
+                    console.log(res)
+                    dispatch({ type: DELETE_CLASSES_SUCCESS, payload: res})
                 })
                 .catch(err => {
                     console.log(err)

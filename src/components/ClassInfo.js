@@ -2,17 +2,27 @@ import React, { useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { getClassInfo } from '../redux';
+import { getClassInfo, deleteClasses } from '../redux';
 import deadlift from '../Images/deadlift.jpg';
+import { useHistory } from 'react-router-dom'
+
 
 
 function ClassInfo(props) {
+
     const { id } = useParams()
     const { class_img, class_type, duration, intensity_level, location, max_class_size, num_of_attendees, start_time } = props.classes;
 
     useEffect(() => {
         props.getClassInfo(id)
     }, [])
+
+    const history = useHistory();
+
+    const deleteHandler = () => {
+        props.deleteClasses(id)
+        history.push('/home')
+    }
 
     return (
         <StyledContainer>
@@ -32,7 +42,7 @@ function ClassInfo(props) {
         <div className='btn-container'>
             <button className='btn'>Reserve A Spot</button>
             <Link className='btn'>Edit This Class</Link>
-            <Link className='btn'>Delete This Class</Link>
+            <Link className='btn' onClick={deleteHandler}>Delete This Class</Link>
         </div>
         </StyledContainer>
     )
@@ -90,4 +100,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {getClassInfo})(ClassInfo)
+export default connect(mapStateToProps, {getClassInfo, deleteClasses})(ClassInfo)
