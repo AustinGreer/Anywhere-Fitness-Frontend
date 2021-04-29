@@ -21,7 +21,9 @@ function ClassInfo(props) {
 
     const deleteHandler = () => {
         props.deleteClasses(id)
-        history.push('/')
+        setTimeout(() => {
+            history.push('/dashboard')
+        }, 2000)
     }
 
     return (

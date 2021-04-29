@@ -9,11 +9,13 @@ import Class from './Class';
 
 
 function Dashboard(props) {
+    const { classes } = props;
+    
     useEffect(() => {
         props.getClasses()
     }, [])
 
-    console.log(props.classes)
+    console.log(classes)
 
     return (
         <StyledDashBoard>
@@ -23,7 +25,7 @@ function Dashboard(props) {
             <StyledClasses>
                 {props.loading && <h2>Loading Classes...</h2>}
 
-                {props.classes && props.classes.map((item) => {
+                {classes.map && classes.map((item) => {
                     return (
                         <Class key={item.class_id} item={item} />
                     )

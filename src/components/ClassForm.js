@@ -28,23 +28,8 @@ label{
 }
 `
 
-// const initialErrValues = {
-//     class_id: "",
-//     class_image: "",
-//     class_type: "",
-//     duration: " ",
-//     intensity_level: "",
-//     location: "",
-//     num_of_attendees: "",
-//     start_time: " ",
-//     max_class_size: "",
-//     user_id: ""
-// }
-
 function ClassForm(props) {
-
         const [values, setValues] = useState(initialValues)
-        // const [errorValues, setErrorValues] = useState(initialErrValues)
         const history = useHistory();
 
         const onChange = (event) => {
@@ -54,11 +39,15 @@ function ClassForm(props) {
 
         const handleSubmit = e => {
             e.preventDefault();
-            const newClass = {...values}
-            console.log(newClass)
-            props.addClasses(newClass)
+            
+       
+        const newClass = {...values}
+        console.log(newClass)
+        props.addClasses(newClass)
+        setTimeout(() => { 
             history.push('/dashboard')
-        }
+        }, 3000)
+    }
 
     return (
         <div>
