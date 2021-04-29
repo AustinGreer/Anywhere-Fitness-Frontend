@@ -21,7 +21,7 @@ function Dashboard(props) {
             <StyledClasses>
                 {props.classes.map(item => {
                     return (
-                        <Class key={item.class_id} item={item} />
+                        <Class item={item} />
                     )
                 })}
             </StyledClasses>

@@ -15,6 +15,7 @@ export const getClasses = () => {
                 .get('https://tt-33-anywhere-fitness.herokuapp.com/api/classes')
                 .then(res => {
                     console.log(res)
+                    dispatch({type: GET_CLASSES_SUCCESS, payload: res.data})
                 })
                 .catch(err => {
                     console.log({err})
@@ -29,7 +30,6 @@ export const getClassInfo = (id) => (dispatch) => {
         axios
             .get(`https://tt-33-anywhere-fitness.herokuapp.com/api/classes/${id}`)
             .then(res => {
-                console.log(res)
                 dispatch({ type: GET_CLASSES_SUCCESS, payload: res.data})
             })
             .catch(err => {
