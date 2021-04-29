@@ -17,7 +17,7 @@ function Dashboard(props) {
         <StyledDashBoard>
             <h2>Current Fitness Classes</h2>
             <input type="text" placeholder="Search Classes"/>
-            <Link to='/classform'>Add Class</Link>
+            <StyledLink to='/classform'>Add Class</StyledLink>
             <StyledClasses>
                 {props.classes.map(item => {
                     return (
@@ -39,6 +39,16 @@ const StyledDashBoard = styled.div`
         font-size: 4rem;
         margin-bottom: 3%;
     }
+`
+
+const StyledLink = styled(Link)`
+    border: 0.15rem solid white;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+    margin-top: 2%;
+    margin-bottom: 3%;
+    padding: 1%;
+
 `
 
 

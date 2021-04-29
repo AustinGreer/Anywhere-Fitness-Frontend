@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import deadlift from '../Images/deadlift.jpg'
 
@@ -13,7 +14,7 @@ function Class(props) {
             <h3>Type: {class_type}</h3>
             <h3>Location: {location}</h3>
             <h3>Start Time: {start_time}</h3>
-            <button>More Info</button>
+            <StyledAnchor to='/class/:id'>More Info</StyledAnchor>
         </StyledCard>
     )
 }
@@ -27,7 +28,7 @@ const StyledCard = styled.section`
     align-items: center;
     margin-bottom: 5%;
     font-family: sans-serif;
-    border: 0.1rem solid black;
+    border: 0.1rem solid white;
 
     h3 {
         margin-bottom: 3%;
@@ -40,4 +41,10 @@ const StyledImg = styled.img`
     margin-bottom: 3%;
 `
 
-export default Class
+const StyledAnchor = styled(Link)`
+    border: 0.2px solid white;
+    border-radius: 0.5rem;
+    margin-bottom: 5%;
+`
+
+export default Class;
