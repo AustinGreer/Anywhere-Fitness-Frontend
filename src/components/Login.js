@@ -38,7 +38,7 @@ cursor: pointer;
 width: 100%;
 color: white;
 background-color: ${pr => pr.theme.secondaryColor};
-&: hover{
+&: hover {
     opacity: 0.8;   
 }
 `

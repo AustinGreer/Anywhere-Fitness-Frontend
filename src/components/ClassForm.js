@@ -32,6 +32,15 @@ function ClassForm() {
             setValues({ ...values, [name]: value })
         }
 
+        const handleSubmit = e => {
+            e.preventDefault();
+
+            const newClass = { 
+                ...values, 
+                
+            }
+        }
+
     return (
         <div>
                         <h1>Class Form</h1>
