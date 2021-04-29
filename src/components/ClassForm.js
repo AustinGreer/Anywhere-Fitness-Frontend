@@ -45,7 +45,7 @@ function ClassForm(props) {
 
         const [values, setValues] = useState(initialValues)
         // const [errorValues, setErrorValues] = useState(initialErrValues)
-        // const history = useHistory();
+        const history = useHistory();
 
         const onChange = (event) => {
             const { name, value } = event.target;
@@ -57,6 +57,7 @@ function ClassForm(props) {
             const newClass = {...values}
             console.log(newClass)
             props.addClasses(newClass)
+            history.push('/dashboard')
         }
 
     return (

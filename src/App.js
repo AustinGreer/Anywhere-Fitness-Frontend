@@ -7,6 +7,7 @@ import Dashboard from './components/Dashboard';
 import NavBar from './components/NavBar';
 import ClassForm from './components/ClassForm';
 import ClassInfo from './components/ClassInfo';
+
 function App() {
   return (
     <div>
