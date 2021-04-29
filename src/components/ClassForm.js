@@ -1,35 +1,65 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { addClasses } from '../redux/actions';
+import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom'
+import  styled  from 'styled-components'
+
 
 const initialValues = {
-    name: "",
-    type: "",
-    startTime: " ",
+    class_id: "",
+    class_image: "",
+    class_type: "",
     duration: " ",
-    intensityLevel: "",
+    intensity_level: "",
     location: "",
-    attendees: "",
-    maxClassSize: ""
+    num_of_attendees: "",
+    start_time: " ",
+    max_class_size: "",
+    user_id: ""
 }
 
+const StyledForm = styled.form`
+display:flex;
+flex-direction: column;
+padding: 2%;
+button{
+    width: 20%;
+}
+label{
+    padding:2%;
+}
+`
+
 // const initialErrValues = {
-//     name: "",
-//     type: "",
-//     startTime: " ",
+//     class_id: "",
+//     class_image: "",
+//     class_type: "",
 //     duration: " ",
-//     intensityLevel: "",
+//     intensity_level: "",
 //     location: "",
-//     attendees: "",
-//     maxClassSize: ""
+//     num_of_attendees: "",
+//     start_time: " ",
+//     max_class_size: "",
+//     user_id: ""
 // }
 
-function ClassForm() {
+function ClassForm(props) {
 
         const [values, setValues] = useState(initialValues)
         // const [errorValues, setErrorValues] = useState(initialErrValues)
+        const history = useHistory();
 
         const onChange = (event) => {
             const { name, value } = event.target;
             setValues({ ...values, [name]: value })
+        }
+
+        const handleSubmit = e => {
+            e.preventDefault();
+            const newClass = {...values}
+            console.log(newClass)
+            props.addClasses(newClass)
+            history.push("/dashboard")
         }
 
     return (
@@ -39,29 +69,37 @@ function ClassForm() {
                             <div>{errorValues.username}</div>
                             <div>{errorValues.password}</div>
                         </div> */}
-            <form className = 'form container'>
-                <label>Name:
+            <StyledForm className = 'form container' onSubmit={handleSubmit}>
+                {/* <label>Name:
                     <input
                         type = 'text'
                         value = {values.name}
                         onChange = {onChange}
                         name = 'name'
                     />
-                </label>
+                </label> */}
                 <label>Type:
                     <input
                         type = 'text'
-                        value = {values.type}
+                        value = {values.class_type}
                         onChange = {onChange}
-                        name = 'type'
+                        name = 'class_type'
+                    />
+                </label>
+                <label>Image:
+                    <input
+                        type = 'text'
+                        value = {values.class_image}
+                        onChange = {onChange}
+                        name = 'class_image'
                     />
                 </label>
                 <label>Start Time:
                     <input
                         type = 'text'
-                        value = {values.startTime}
+                        value = {values.start_time}
                         onChange = {onChange}
-                        name = 'startTime'
+                        name = 'start_time'
                     />
                 </label>
                 <label>Duration:
@@ -75,9 +113,9 @@ function ClassForm() {
                 <label>Intensity Level:
                     <input
                         type = 'text'
-                        value = {values.intensityLevel}
+                        value = {values.intensity_level}
                         onChange = {onChange}
-                        name = 'intensityLevel'
+                        name = 'intensity_level'
                     />
                 </label>
                 <label>Location:
@@ -90,7 +128,7 @@ function ClassForm() {
                 </label>
                 <label>Attendees:
                     <input
-                        type = 'text'
+                        type = 'number'
                         value = {values.attendees}
                         onChange = {onChange}
                         name = 'attendees'
@@ -98,16 +136,26 @@ function ClassForm() {
                 </label>
                 <label>Max Class Size:
                     <input
-                        type = 'text'
-                        value = {values.maxClassSize}
+                        type = 'number'
+                        value = {values.max_class_size}
                         onChange = {onChange}
-                        name = 'maxClassSize'
+                        name = 'max_class_size'
                     />
                 </label>
-                <button>Sign Up Now!</button>
-            </form>
+                <button>Add Class</button>
+            </StyledForm>
         </div>
     )
 }
 
-export default ClassForm
+const mapStatesToProps = (state) => {
+    const { classes, loading, isLoggedIn, error } = state
+    return {
+        classes,
+        loading,
+        isLoggedIn,
+        error
+    }
+}
+
+export default connect(mapStatesToProps, { addClasses })(ClassForm)
