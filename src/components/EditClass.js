@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import { editClasses } from "../redux/actions";
+import { editClasses } from "../store/actions";
 import { connect } from "react-redux";
 
 function EditClass(props) {

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { getClassInfo, deleteClasses } from '../redux';
+import { getClassInfo, deleteClasses } from '../store';
 import deadlift from '../Images/deadlift.jpg';
 import { useHistory } from 'react-router-dom'
 

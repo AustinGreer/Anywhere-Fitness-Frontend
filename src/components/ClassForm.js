@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { addClasses } from "../redux/actions";
+import { addClasses } from "../store/actions";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";

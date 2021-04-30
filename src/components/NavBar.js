@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logOut } from '../redux'
+import { logOut } from '../store'
 import styled from 'styled-components';
 
 
