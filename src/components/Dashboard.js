@@ -6,7 +6,7 @@ import { getClasses } from "../redux";
 import Class from "./Class";
 
 function Dashboard(props) {
-  const { classes } = props;
+  console.log(props.currentUser.auth_code)
 
   useEffect(() => {
     props.getClasses();
@@ -15,13 +15,12 @@ function Dashboard(props) {
   return (
     <StyledDashBoard>
       <h2>Current Fitness Classes</h2>
-      <input type="text" placeholder="Search Classes" />
-      <StyledLink to="/classform">Add Class</StyledLink>
+      { props.currentUser.auth_code && <StyledLink to="/classform">Add Class</StyledLink>}
       <StyledClasses>
         {props.loading && <h2>Loading Classes...</h2>}
 
-        {classes.map &&
-          classes.map((item) => {
+        {props.classes.map &&
+          props.classes.map((item) => {
             return <Class key={item.class_id} item={item} />;
           })}
 
@@ -66,6 +65,7 @@ const mapStateToProps = (state) => {
     classes: state.classes,
     loading: state.loading,
     errors: state.errors,
+    currentUser: state.currentUser
   };
 };
 

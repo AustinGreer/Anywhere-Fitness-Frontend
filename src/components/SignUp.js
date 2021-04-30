@@ -10,11 +10,13 @@ import styled from 'styled-components';
 const initialSignUpValues = {
     username: '',
     password: '',
+    auth_code: ''
 }
 
 const initialErrorValues = {
     username: '',
     password: '',
+    auth_code: ''
 }
 
 function SignUp({addUser}) {
@@ -66,10 +68,18 @@ function SignUp({addUser}) {
                     </Tags>
                     <Tags>Password:
                         <Input 
-                            type = 'text'
+                            type = 'password'
                             value = {signUpValues.password}
                             onChange = {onChange}
                             name = 'password'
+                        />
+                    </Tags>
+                    <Tags>Instructor Code:
+                        <Input
+                            type='text'
+                            name='auth_code'
+                            onChange={onChange}
+                            value={signUpValues.auth_code}
                         />
                     </Tags>
                     <Button>Sign Up Now!</Button>

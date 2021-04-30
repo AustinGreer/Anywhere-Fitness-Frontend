@@ -10,4 +10,6 @@ export default yup.object().shape({
         .string()
         .required("Password is Required")
         .min(6, "Passwords must be at least 6 characters long."),
+    auth_code: yup
+        .string()
 });

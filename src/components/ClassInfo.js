@@ -43,8 +43,8 @@ function ClassInfo(props) {
         </StyledClassInfo>
         <div className='btn-container'>
             <button className='btn'>Reserve A Spot</button>
-            <Link className='btn' to={`/editclass/${id}`}>Edit This Class</Link>
-            <button className='btn' onClick={deleteHandler}>Delete This Class</button>
+            {props.currentUser.auth_code && <Link className='btn' to={`/editclass/${id}`}>Edit This Class</Link>}
+            {props.currentUser.auth_code && <button className='btn' onClick={deleteHandler}>Delete This Class</button>}
         </div>
         </StyledContainer>
     )
@@ -96,6 +96,7 @@ const StyledImg = styled.img`
 const mapStateToProps = state => {
     return {
         classes: state.classes,
+        currentUser: state.currentUser,
         loading: state.loading,
         isLoggedIn: state.isLoggedIn,
         error: state.error
