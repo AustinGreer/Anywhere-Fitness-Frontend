@@ -38,6 +38,8 @@ const StyledContainer = styled.div`
     justify-content: space-between;
     align-items: baseline;
     font-size: 2rem;
+    margin-left: 3%;
+    margin-right: 3%;
 `
 
 const StyledNav = styled.nav`
