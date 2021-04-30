@@ -1,10 +1,106 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
-import axios from 'axios'
-import * as yup from 'yup'
-import schema from '../validation/LoginSchema'
-import styled from 'styled-components'
+import { connect } from 'react-redux';
+import * as yup from 'yup';
+import { logIn } from '../redux';
+import schema from '../validation/LoginSchema';
+import styled from 'styled-components';
 
+
+
+function Login({isLoggedIn, logIn}) {
+
+    const formState = {
+        username: '',
+        password: ''
+    }
+
+    const initialFormErrors = {
+        username: '',
+        password: ''
+    }
+
+    const initialDisabled = true;
+
+    const [form, setForm] = useState(formState);
+    const [formError, setFormError] = useState(initialFormErrors);
+    const [disabled, setDisabled] = useState(initialDisabled);
+
+
+    const { push } = useHistory();
+
+    const inputChange = (name, value) => {
+
+        yup.reach(schema, name)
+            .validate(value)
+            .then(() => {
+                setFormError({ ...formError, [name]: '' })
+            })
+            .catch((err) => {
+                setFormError({ ...formError, [name]: err.errors[0] })
+            })
+
+
+        setForm({ ...form, [name]: value })
+    }
+
+    useEffect(() => {
+        schema.isValid(form)
+            .then(valid => setDisabled(!valid))
+    }, [form])
+
+    const onChange = (event) => {
+        const { name, value } = event.target;
+        inputChange(name, value);
+    }
+
+    const handleLogIn = (e) => {
+        e.preventDefault();
+        logIn(form)
+        push('/dashboard')
+    }
+
+    return (
+        <MainDiv>
+            <Container>
+                <form onSubmit={handleLogIn}>
+                    <Forms>
+                        <div className="errors">
+                            <div>{formError.username}</div>
+                            <div>{formError.password}</div>
+                            <div>{formError.phoneNumber}</div>
+                        </div>
+                        <Tags>Username</Tags>
+                        <Input value={form.username}
+                            onChange={onChange}
+                            name="username"
+                            type="text" />
+                    </Forms>
+                    <Forms>
+                        <Tags>Password</Tags>
+                        <Input value={form.password}
+                            onChange={onChange}
+                            name="password"
+                            type="text" />
+                    </Forms>
+                    <Button disabled={disabled}>Login</Button>
+                </form>
+            </Container>
+        </MainDiv>
+    )
+}
+
+const mapStateToProps = (state) => {
+    return {
+        isLoggedIn: state.isLoggedIn
+    }
+}
+
+export default connect(mapStateToProps, {logIn})(Login)
+
+
+
+// styled components
 const MainDiv = styled.div`
 background-image: url('https://images.unsplash.com/photo-1603077492340-e6e62b2a688b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');
 padding:20%;
@@ -46,96 +142,3 @@ background-color: ${pr => pr.theme.secondaryColor};
 const Forms = styled.div`
 
 `
-
-function Login(props) {
-
-    const formState = {
-        username: '',
-        password: ''
-    }
-
-    const initialFormErrors = {
-        username: '',
-        password: ''
-    }
-
-    const initialDisabled = true;
-
-    const [form, setForm] = useState(formState);
-    const [formError, setFormError] = useState(initialFormErrors);
-    const [disabled, setDisabled] = useState(initialDisabled);
-
-
-    const history = useHistory();
-
-    const inputChange = (name, value) => {
-
-        yup.reach(schema, name)
-            .validate(value)
-            .then(() => {
-                setFormError({ ...formError, [name]: '' })
-            })
-            .catch((err) => {
-                setFormError({ ...formError, [name]: err.errors[0] })
-            })
-
-
-        setForm({ ...form, [name]: value })
-    }
-
-    const formSubmit = (e) => {
-        e.preventDefault();
-
-        axios.post('https://tt-33-anywhere-fitness.herokuapp.com/api/login', form)
-            .then(res => {
-                console.log(res.data)
-                localStorage.setItem('token', res.data.token);
-                props.login(res.data.data.user_id);
-                history.push('/');
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
-
-    useEffect(() => {
-        schema.isValid(form)
-            .then(valid => setDisabled(!valid))
-    }, [form])
-
-    const onChange = (event) => {
-        const { name, value } = event.target;
-        inputChange(name, value);
-    }
-
-    return (
-        <MainDiv>
-            <Container>
-                <div onSubmit={formSubmit}>
-                    <Forms>
-                        <div className="errors">
-                            <div>{formError.username}</div>
-                            <div>{formError.password}</div>
-                            <div>{formError.phoneNumber}</div>
-                        </div>
-                        <Tags>Username</Tags>
-                        <Input value={form.username}
-                            onChange={onChange}
-                            name="username"
-                            type="text" />
-                    </Forms>
-                    <Forms>
-                        <Tags>Password</Tags>
-                        <Input value={form.password}
-                            onChange={onChange}
-                            name="password"
-                            type="text" />
-                    </Forms>
-                    <Button disabled={disabled}>Login</Button>
-                </div>
-            </Container>
-        </MainDiv>
-    )
-}
-
-export default Login
