@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
+import PrivateRoute from './components/PrivateRoute';
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import Home from "./components/Home";
@@ -14,12 +15,12 @@ function App() {
     <div>
       <NavBar />
       <Switch>
-        <Route path="/editclass/:id" component={EditClass} />
-        <Route path="/class/:id" component={ClassInfo} />
+        <PrivateRoute path="/editclass/:id" component={EditClass} />
+        <PrivateRoute path="/class/:id" component={ClassInfo} />
+        <PrivateRoute path="/dashboard" component={Dashboard} />
+        <PrivateRoute path="/classform" component={ClassForm} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
-        <Route path="/dashboard" component={Dashboard} />
-        <Route path="/classform" component={ClassForm} />
         <Route exact path="/" component={Home} />
       </Switch>
     </div>
