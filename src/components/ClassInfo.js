@@ -43,7 +43,7 @@ function ClassInfo(props) {
         </StyledClassInfo>
         <div className='btn-container'>
             <button className='btn'>Reserve A Spot</button>
-            <Link className='btn' to='/classform'>Edit This Class</Link>
+            <Link className='btn' to={`/editclass/${id}`}>Edit This Class</Link>
             <button className='btn' onClick={deleteHandler}>Delete This Class</button>
         </div>
         </StyledContainer>
