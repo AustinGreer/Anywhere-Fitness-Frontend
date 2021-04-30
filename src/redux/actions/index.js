@@ -1,4 +1,5 @@
 import axios from "axios";
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 export const ADD_CLASSES_START = "ADD_CLASSES_START";
 export const ADD_CLASSES_SUCCESS = "ADD_CLASSES_SUCCESS";
@@ -52,8 +53,8 @@ export const logOut = () => {
 // classes actions
 export const addClasses = (newClass) => (dispatch) => {
   dispatch({ type: ADD_CLASSES_START });
-  axios
-    .post("https://tt-33-anywhere-fitness.herokuapp.com/api/classes", newClass)
+  axiosWithAuth()
+    .post("classes", newClass)
     .then((res) => {
       dispatch({
         type: ADD_CLASSES_SUCCESS,
@@ -66,8 +67,8 @@ export const addClasses = (newClass) => (dispatch) => {
 export const getClasses = () => {
   return (dispatch) => {
     dispatch({ type: GET_CLASSES_START });
-    return axios
-      .get("https://tt-33-anywhere-fitness.herokuapp.com/api/classes")
+    return axiosWithAuth()
+      .get("classes")
       .then((res) => {
         dispatch({ type: GET_CLASSES_SUCCESS, payload: res.data });
       })
@@ -79,8 +80,8 @@ export const getClasses = () => {
 
 export const getClassInfo = (id) => (dispatch) => {
   dispatch({ type: GET_CLASSES_START });
-  return axios
-    .get(`https://tt-33-anywhere-fitness.herokuapp.com/api/classes/${id}`)
+  return axiosWithAuth()
+    .get(`classes/${id}`)
     .then((res) => {
       dispatch({ type: GET_CLASSES_SUCCESS, payload: res.data });
     })
@@ -91,8 +92,8 @@ export const getClassInfo = (id) => (dispatch) => {
 
 export const editClasses = (id, editClass) => (dispatch) => {
   dispatch({ type: EDIT_CLASSES_START });
-  return axios
-    .put(`https://tt-33-anywhere-fitness.herokuapp.com/api/classes/${id}`, editClass)
+  return axiosWithAuth()
+    .put(`classes/${id}`, editClass)
     .then((res) => {
         dispatch({type: EDIT_CLASSES_SUCCESS, payload: res.data})
     })
@@ -105,7 +106,7 @@ export const editClasses = (id, editClass) => (dispatch) => {
 export const deleteClasses = (id) => (dispatch) => {
   dispatch({ type: DELETE_CLASSES_START });
   return axios
-    .delete(`https://tt-33-anywhere-fitness.herokuapp.com/api/classes/${id}`)
+    .delete(`classes/${id}`)
     .then((res) => {
       console.log(res);
       dispatch({ type: DELETE_CLASSES_SUCCESS, payload: res });
