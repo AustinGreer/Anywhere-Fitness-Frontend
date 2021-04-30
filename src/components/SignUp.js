@@ -44,7 +44,7 @@ function SignUp({addUser}) {
     const handleSignUp = (e) => {
         e.preventDefault();
         addUser(signUpValues)
-        push('/')
+        push('/login')
     }
 
     return (

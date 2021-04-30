@@ -1,16 +1,17 @@
 import {
   SIGN_UP_SUCCESS,
+  LOG_IN_SUCCESS,
   LOG_OUT_SUCCESS,
-  DELETE_CLASSES_START,
-  DELETE_CLASSES_SUCCESS,
-  ADD_CLASSES_START,
-  ADD_CLASSES_SUCCESS,
   GET_CLASSES_START,
   GET_CLASSES_SUCCESS,
   GET_CLASSES_FAILURE,
+  ADD_CLASSES_START,
+  ADD_CLASSES_SUCCESS,
   EDIT_CLASSES_START,
   EDIT_CLASSES_SUCCESS,
   EDIT_CLASSES_FAILURE,
+  DELETE_CLASSES_START,
+  DELETE_CLASSES_SUCCESS,
 } from "../actions";
 
 const initialState = {
@@ -35,9 +36,15 @@ export function rootReducer(state = initialState, action) {
     case SIGN_UP_SUCCESS:
       return {
         ...state,
-        isLoggedIn: true,
         currentUser: action.payload
       };
+
+    case LOG_IN_SUCCESS:
+      return {
+        ...state,
+        isLoggedIn: true, 
+        currentUser: action.payload
+      }
 
     case LOG_OUT_SUCCESS:
       return {

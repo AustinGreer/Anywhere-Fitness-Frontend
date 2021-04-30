@@ -1,13 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logOut } from '../redux'
 import styled from 'styled-components';
 
 
 function NavBar({isLoggedIn, logOut}) {
+    const { push } = useHistory()
+    
     const handleLogOut = (e) => {
+        window.localStorage.removeItem('token')
         logOut()
+        push('/signup')
     }
     
     return (
@@ -18,9 +22,9 @@ function NavBar({isLoggedIn, logOut}) {
                 { !isLoggedIn && 
                     <Link to="/login">Login</Link>}
                 {isLoggedIn ? 
-                    <Link onClick={handleLogOut}>Logout</Link>
+                    <Link onClick={handleLogOut}>Log Out</Link>
                     :
-                    <Link to="/signup">Signup</Link>}
+                    <Link to="/signup">Sign Up</Link>}
                 { isLoggedIn && 
                     <Link to="/dashboard">Dashboard</Link>}
             </StyledNav>
