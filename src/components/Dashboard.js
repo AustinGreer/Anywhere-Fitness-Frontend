@@ -12,8 +12,6 @@ function Dashboard(props) {
     props.getClasses();
   }, []);
 
-  console.log(classes);
-
   return (
     <StyledDashBoard>
       <h2>Current Fitness Classes</h2>

@@ -9,15 +9,8 @@ import deadlift from '../Images/deadlift.jpg'
 import Contact from './Contact.js'
 
 
-function Home({ loading, dispatch }) {
+function Home() {
 
-    useEffect(() => {
-        axios
-        .get('https://tt-33-anywhere-fitness.herokuapp.com/api/classes')
-        .then(res=>{
-            console.log(res.data)
-        })
-    },[])
 
     return (
             <div>

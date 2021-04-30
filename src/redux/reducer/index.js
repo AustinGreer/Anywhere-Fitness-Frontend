@@ -1,4 +1,5 @@
 import {
+  SIGN_UP_SUCCESS,
   DELETE_CLASSES_START,
   DELETE_CLASSES_SUCCESS,
   ADD_CLASSES_START,
@@ -17,12 +18,26 @@ const initialState = {
   deleteClass: [],
   editClass: [],
   isLoggedin: false,
+  currentUser: {
+    auth_code: null,
+    password: '',
+    user_id: 0,
+    user_type: 1,
+    user_name: ''
+  },
   loading: false,
   errors: "",
 };
 
 export function rootReducer(state = initialState, action) {
   switch (action.type) {
+    case SIGN_UP_SUCCESS:
+      return {
+        ...state,
+        isLoggedIn: true,
+        currentUser: action.payload
+      }
+
     case GET_CLASSES_START:
       return {
         ...state,
@@ -34,6 +49,7 @@ export function rootReducer(state = initialState, action) {
         ...state,
         classes: action.payload,
         loading: false,
+        isLoggedin: true,
         errors: "",
       };
 

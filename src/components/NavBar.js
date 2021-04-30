@@ -1,21 +1,37 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 
-function NavBar() {
+function NavBar({isLoggedIn}) {
     return (
         <StyledContainer>
             <h1>Anywhere Fitness</h1>
             <StyledNav>
                 <Link to="/">Home</Link>
-                <Link to="/login">Login</Link>
-                <Link to="/signup">Sign up</Link>
-                <Link to="/dashboard">Dashboard</Link>
+                { !isLoggedIn && 
+                    <Link to="/login">Login</Link>}
+                {isLoggedIn ? 
+                    <Link to='/signup'>Logout</Link>
+                    :
+                    <Link to="/signup">Signup</Link>}
+                { isLoggedIn && 
+                    <Link to="/dashboard">Dashboard</Link>}
             </StyledNav>
         </StyledContainer>
     )
 }
+
+const mapStateToProps = state => {
+    return {
+        isLoggedIn: state.isLoggedIn
+    }
+}
+
+export default connect(mapStateToProps, {})(NavBar)
+
+
 
 const StyledContainer = styled.div`
     display: flex;
@@ -29,6 +45,3 @@ const StyledNav = styled.nav`
     display: flex;
     justify-content: flex-end;
 `
-
-
-export default NavBar

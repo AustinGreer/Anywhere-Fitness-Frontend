@@ -16,7 +16,7 @@ export const EDIT_CLASSES_START = "EDIT_CLASSES_START";
 export const EDIT_CLASSES_SUCCESS = "EDIT_CLASSES_SUCCESS";
 export const EDIT_CLASSES_FAILURE = "EDIT_CLASSES_FAILURE";
 
-export const REGISTER_USER = "REGISTER_USER"
+export const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS"
 
 
 
@@ -30,12 +30,20 @@ export const addClasses = (newClass) => (dispatch) => {
         type: ADD_CLASSES_SUCCESS,
         payload: res.data,
       });
-
-      console.log(res);
-      dispatch({ type: ADD_CLASSES_SUCCESS, payload: res.data });
     })
     .catch((err) => console.log(err));
 };
+
+export const addUser = (newUser) => (dispatch) => {
+  axios
+    .post('https://tt-33-anywhere-fitness.herokuapp.com/auth/register', newUser)
+    .then(res => {
+      dispatch({type:SIGN_UP_SUCCESS, payload: res.data[0]})
+    })
+    .catch(err => {
+      console.log({err})
+    })
+}
 
 // R E A D 
 export const getClasses = () => {
