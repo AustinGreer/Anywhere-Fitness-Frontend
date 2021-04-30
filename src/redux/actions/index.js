@@ -54,7 +54,7 @@ export const logOut = () => {
 export const addClasses = (newClass) => (dispatch) => {
   dispatch({ type: ADD_CLASSES_START });
   axiosWithAuth()
-    .post("classes", newClass)
+    .post(`classes`, newClass)
     .then((res) => {
       dispatch({
         type: ADD_CLASSES_SUCCESS,
@@ -68,7 +68,7 @@ export const getClasses = () => {
   return (dispatch) => {
     dispatch({ type: GET_CLASSES_START });
     return axiosWithAuth()
-      .get("classes")
+      .get(`classes`)
       .then((res) => {
         dispatch({ type: GET_CLASSES_SUCCESS, payload: res.data });
       })
@@ -105,13 +105,13 @@ export const editClasses = (id, editClass) => (dispatch) => {
 
 export const deleteClasses = (id) => (dispatch) => {
   dispatch({ type: DELETE_CLASSES_START });
-  return axios
+  return axiosWithAuth()
     .delete(`classes/${id}`)
     .then((res) => {
       console.log(res);
       dispatch({ type: DELETE_CLASSES_SUCCESS, payload: res });
     })
     .catch((err) => {
-      console.log(err);
+      console.log({err});
     });
 };
