@@ -16,6 +16,26 @@ export const EDIT_CLASSES_START = "EDIT_CLASSES_START";
 export const EDIT_CLASSES_SUCCESS = "EDIT_CLASSES_SUCCESS";
 export const EDIT_CLASSES_FAILURE = "EDIT_CLASSES_FAILURE";
 
+
+
+// C R E A T E
+export const addClasses = (newClass) => (dispatch) => {
+  dispatch({ type: ADD_CLASSES_START });
+  axios
+    .post("https://tt-33-anywhere-fitness.herokuapp.com/api/classes", newClass)
+    .then((res) => {
+      dispatch({
+        type: ADD_CLASSES_SUCCESS,
+        payload: res.data,
+      });
+
+      console.log(res);
+      dispatch({ type: ADD_CLASSES_SUCCESS, payload: res.data });
+    })
+    .catch((err) => console.log(err));
+};
+
+// R E A D 
 export const getClasses = () => {
   return (dispatch) => {
     dispatch({ type: GET_CLASSES_START });
@@ -42,35 +62,7 @@ export const getClassInfo = (id) => (dispatch) => {
     });
 };
 
-export const addClasses = (newClass) => (dispatch) => {
-  dispatch({ type: ADD_CLASSES_START });
-  axios
-    .post("https://tt-33-anywhere-fitness.herokuapp.com/api/classes", newClass)
-    .then((res) => {
-      dispatch({
-        type: ADD_CLASSES_SUCCESS,
-        payload: res.data,
-      });
-
-      console.log(res);
-      dispatch({ type: ADD_CLASSES_SUCCESS, payload: res.data });
-    })
-    .catch((err) => console.log(err));
-};
-
-export const deleteClasses = (id) => (dispatch) => {
-  dispatch({ type: DELETE_CLASSES_START });
-  return axios
-    .delete(`https://tt-33-anywhere-fitness.herokuapp.com/api/classes/${id}`)
-    .then((res) => {
-      console.log(res);
-      dispatch({ type: DELETE_CLASSES_SUCCESS, payload: res });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-
+// E D I T
 export const editClasses = (id, editClass) => (dispatch) => {
   dispatch({ type: EDIT_CLASSES_START });
   return axios
@@ -82,4 +74,18 @@ export const editClasses = (id, editClass) => (dispatch) => {
         type: EDIT_CLASSES_FAILURE,
         payload: err.message
     }));
+};
+
+// D E L E T E
+export const deleteClasses = (id) => (dispatch) => {
+  dispatch({ type: DELETE_CLASSES_START });
+  return axios
+    .delete(`https://tt-33-anywhere-fitness.herokuapp.com/api/classes/${id}`)
+    .then((res) => {
+      console.log(res);
+      dispatch({ type: DELETE_CLASSES_SUCCESS, payload: res });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
