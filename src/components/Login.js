@@ -86,16 +86,6 @@ function Login(props) {
     const formSubmit = (e) => {
         e.preventDefault();
 
-        axios.post('https://tt-33-anywhere-fitness.herokuapp.com/api/login', form)
-            .then(res => {
-                console.log(res.data)
-                localStorage.setItem('token', res.data.token);
-                props.login(res.data.data.user_id);
-                history.push('/');
-            })
-            .catch(err => {
-                console.log(err);
-            })
     }
 
     useEffect(() => {
