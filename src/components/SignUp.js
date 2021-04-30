@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { addUser } from '../redux';
+import { addUser } from '../store';
 import schema from '../validation/LoginSchema';
 import * as yup from 'yup';
 import styled from 'styled-components';

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as yup from 'yup';
-import { logIn } from '../redux';
+import { logIn } from '../store';
 import schema from '../validation/LoginSchema';
 import styled from 'styled-components';
 
