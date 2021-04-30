@@ -1,5 +1,6 @@
 import {
   SIGN_UP_SUCCESS,
+  LOG_OUT_SUCCESS,
   DELETE_CLASSES_START,
   DELETE_CLASSES_SUCCESS,
   ADD_CLASSES_START,
@@ -36,6 +37,12 @@ export function rootReducer(state = initialState, action) {
         ...state,
         isLoggedIn: true,
         currentUser: action.payload
+      };
+
+    case LOG_OUT_SUCCESS:
+      return {
+        ...state,
+        isLoggedin: action.payload
       }
 
     case GET_CLASSES_START:

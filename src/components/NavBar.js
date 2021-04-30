@@ -1,10 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { logOut } from '../redux'
 import styled from 'styled-components';
 
 
-function NavBar({isLoggedIn}) {
+function NavBar({isLoggedIn, logOut}) {
+    const handleLogOut = (e) => {
+        logOut()
+    }
+    
     return (
         <StyledContainer>
             <h1>Anywhere Fitness</h1>
@@ -13,7 +18,7 @@ function NavBar({isLoggedIn}) {
                 { !isLoggedIn && 
                     <Link to="/login">Login</Link>}
                 {isLoggedIn ? 
-                    <Link to='/signup'>Logout</Link>
+                    <Link onClick={handleLogOut}>Logout</Link>
                     :
                     <Link to="/signup">Signup</Link>}
                 { isLoggedIn && 
@@ -29,7 +34,7 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {})(NavBar)
+export default connect(mapStateToProps, {logOut})(NavBar)
 
 
 
