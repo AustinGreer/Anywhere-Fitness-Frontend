@@ -1,7 +1,5 @@
-import axios from 'axios';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { getClasses } from '../store/actions';
 import styled from 'styled-components'
 import weights from '../Images/weights.jpg'
 import lifting from '../Images/lifting.jpg'

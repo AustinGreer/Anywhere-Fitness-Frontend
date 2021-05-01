@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { rootReducer } from './store'
 import './index.css';
-import theme from './theme/index.js'
+import { theme } from './theme/index.js'
 import {ThemeProvider} from 'styled-components'
 
 
