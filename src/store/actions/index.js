@@ -18,7 +18,8 @@ export const EDIT_CLASSES_SUCCESS = "EDIT_CLASSES_SUCCESS";
 export const EDIT_CLASSES_FAILURE = "EDIT_CLASSES_FAILURE";
 
 export const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS";
-export const LOG_IN_SUCCESS = "LOG_IN_SUCCESS"
+export const LOG_IN_SUCCESS = "LOG_IN_SUCCESS";
+export const LOG_IN_FAILURE = "LOG-IN-FAILURE";
 export const LOG_OUT_SUCCESS = "LOG_OUT_SUCCESS";
 
 
@@ -45,7 +46,7 @@ export const logIn = (newUser) => (dispatch) => {
       window.localStorage.setItem('token', res.data.token)
     })
     .catch(err => {
-      console.log({err})
+      dispatch({type: LOG_IN_FAILURE, payload: err.message})
     })
 }
 

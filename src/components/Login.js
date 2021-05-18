@@ -8,7 +8,7 @@ import styled from 'styled-components';
 
 
 
-function Login({isLoggedIn, logIn}) {
+function Login({logIn}) {
 
     const formState = {
         username: '',
