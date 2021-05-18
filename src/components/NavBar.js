@@ -41,7 +41,7 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, {logOut})(NavBar)
 
 
-
+// styled components
 const StyledContainer = styled.div`
     display: flex;
     justify-content: space-between;

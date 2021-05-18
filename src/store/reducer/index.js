@@ -22,7 +22,6 @@ const initialState = {
   isLoggedin: false,
   currentUser: {
     auth_code: null,
-    password: '',
     user_id: 0,
     user_type: 1,
     user_name: ''
