@@ -46,7 +46,7 @@ const StyledContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    font-size: 2rem;
+    font-size: 1.5rem;
     background: #242943;
     color: white;
     width: 100%;
