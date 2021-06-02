@@ -47,12 +47,18 @@ const StyledContainer = styled.div`
     justify-content: space-between;
     align-items: baseline;
     font-size: 2rem;
-    margin-left: 3%;
-    margin-right: 3%;
+    background: #242943;
+    color: white;
+    width: 100%;
+
+    h1 {
+        margin-left: 3%;
+    }
 `
 
 const StyledNav = styled.nav`
     width: 50%;
     display: flex;
     justify-content: flex-end;
+    margin-right: 4%;
 `
