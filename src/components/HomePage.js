@@ -1,13 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import fitnessImg from '../Images/fitness-travel.jpg'
+import { Link } from 'react-router-dom';
+
+import fitnessImg from '../Images/fitness-travel.jpg';
 
 function HomePage() {
     return (
         <div>
             <StyledSection>
                 <h2>Fitness Can Take Place Anywhere. Why Limit Yourself?</h2>
-                <a>Get Started Today</a>
+                <Link to='/login'>Get Started Today</Link>
             </StyledSection>
             <StyledInfo>
                 <h2>About Anywhere Fitness</h2>
@@ -34,6 +36,7 @@ const StyledSection = styled.section`
     h2 {
         color: white;
         font-size: 2.4rem;
+        font-weight: bold;
         width: 50%;
         text-align: center
     }

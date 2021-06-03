@@ -22,8 +22,7 @@ function App() {
         <PrivateRoute path="/classform" component={ClassForm} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
-        <Route path="/home" component={HomePage} />
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={HomePage} />
       </Switch>
     </div>
   );
