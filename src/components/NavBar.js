@@ -43,16 +43,23 @@ export default connect(mapStateToProps, {logOut})(NavBar)
 
 // styled components
 const StyledContainer = styled.div`
+    position: fixed;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    font-size: 2rem;
-    margin-left: 3%;
-    margin-right: 3%;
+    font-size: 1.5rem;
+    background: #242943;
+    color: white;
+    width: 100%;
+
+    h1 {
+        margin-left: 3%;
+    }
 `
 
 const StyledNav = styled.nav`
     width: 50%;
     display: flex;
     justify-content: flex-end;
+    margin-right: 4%;
 `
