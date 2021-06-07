@@ -63,6 +63,7 @@ function Login({logIn}) {
     return (
         <LoginSection>
             <Container>
+                <h1>Login Here</h1>
                 <form onSubmit={handleLogIn}>
                     <Forms>
                         <div className="errors">
@@ -102,8 +103,11 @@ export default connect(mapStateToProps, {logIn})(Login)
 
 // styled components
 const LoginSection = styled.section`
-background-image: url('https://images.unsplash.com/photo-1603077492340-e6e62b2a688b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');
-padding:20%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('/assets/javier-santos-guzman-9MR78HGoflw-unsplash.jpg');
+    padding:25%;
 
 `
 
@@ -113,9 +117,18 @@ color: white;
 `
 
 const Container = styled.div`
-padding: 7% 25%;
-background-color: ${pr => pr.theme.primaryColor};
-opacity: 0.9;
+    background-color: #242943;
+    opacity: 0.9;
+    width: 100%;
+    padding: 5%;
+    border: 2px solid white;
+
+
+h1 {
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+}
 `
 const Input = styled.input`
 width: 100%;
