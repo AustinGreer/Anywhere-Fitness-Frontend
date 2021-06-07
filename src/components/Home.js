@@ -6,16 +6,13 @@ import fitnessImg from '../Images/fitness-travel.jpg';
 
 function Home() {
     return (
-        <div>
+    
             <StyledSection>
                 <h2>Fitness Can Take Place Anywhere. Why Limit Yourself?</h2>
                 <Link to='/login'>Get Started Today</Link>
             </StyledSection>
-            <StyledInfo>
-                <h2>About Anywhere Fitness</h2>
-                <p>These days, fitness classes can be held anywhere - a park, an unfinished basement or a garage - not just at a traditional gym. Certified fitness instructors need an easy way to take the awkwardness out of attendance taking and client payment processing.</p>
-            </StyledInfo>
-        </div>
+            
+        
     )
 }
 
@@ -27,7 +24,7 @@ const StyledSection = styled.section`
     background-repeat: no-repeat;
     background-image: url(${fitnessImg});
     width: 100vw;
-    height: 90vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
