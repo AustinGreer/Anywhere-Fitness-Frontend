@@ -61,7 +61,7 @@ function Login({logIn}) {
     }
 
     return (
-        <MainDiv>
+        <LoginSection>
             <Container>
                 <form onSubmit={handleLogIn}>
                     <Forms>
@@ -86,7 +86,7 @@ function Login({logIn}) {
                     <Button disabled={disabled}>Login</Button>
                 </form>
             </Container>
-        </MainDiv>
+        </LoginSection>
     )
 }
 
@@ -101,7 +101,7 @@ export default connect(mapStateToProps, {logIn})(Login)
 
 
 // styled components
-const MainDiv = styled.div`
+const LoginSection = styled.section`
 background-image: url('https://images.unsplash.com/photo-1603077492340-e6e62b2a688b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');
 padding:20%;
 
