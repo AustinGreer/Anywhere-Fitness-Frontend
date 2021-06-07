@@ -61,9 +61,10 @@ function Login({logIn}) {
     }
 
     return (
-        <LoginSection>
-            <Container>
-                <h1>Login Here</h1>
+        <Section>
+            <h1>Take Control of Your Fitness Goals Today</h1>
+            <FormContainer>
+                <h2>Login Here</h2>
                 <form onSubmit={handleLogIn}>
                     <Forms>
                         <div className="errors">
@@ -71,14 +72,14 @@ function Login({logIn}) {
                             <div>{formError.password}</div>
                             <div>{formError.phoneNumber}</div>
                         </div>
-                        <Tags>Username</Tags>
+                        <h3>Username</h3>
                         <Input value={form.username}
                             onChange={onChange}
                             name="username"
                             type="text" />
                     </Forms>
                     <Forms>
-                        <Tags>Password</Tags>
+                        <h3>Password</h3>
                         <Input value={form.password}
                             onChange={onChange}
                             name="password"
@@ -86,72 +87,74 @@ function Login({logIn}) {
                     </Forms>
                     <Button disabled={disabled}>Login</Button>
                 </form>
-            </Container>
-        </LoginSection>
+            </FormContainer>
+        </Section>
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        isLoggedIn: state.isLoggedIn
-    }
-}
 
-export default connect(mapStateToProps, {logIn})(Login)
+
+export default connect(null, {logIn})(Login)
 
 
 
 // styled components
-const LoginSection = styled.section`
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-image: url('/assets/javier-santos-guzman-9MR78HGoflw-unsplash.jpg');
-    padding:25%;
+const Section = styled.section`
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid black;
+    width: 100vw;
+    height: 100vh;
+
+    h1 {
+        font-size: 4rem;
+        width: 30%;
+        text-align: center;
+        font-weight: bold;
+    }
 
 `
 
-const Tags = styled.div`
-font-size: 2rem;
-color: white;
-`
 
-const Container = styled.div`
+const FormContainer = styled.div`
     background-color: #242943;
     opacity: 0.9;
-    width: 100%;
+    width: 40%;
     padding: 5%;
-    border: 2px solid white;
+    border-radius: 10px;
 
 
-h1 {
+h2 {
     color: white;
     font-size: 3rem;
     text-align: center;
 }
 `
 const Input = styled.input`
-width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
+    width: 100%;
+    padding: 12px 20px;
+    margin-bottom: 5%;
 `
 
 const Button = styled.button`
+font-size: 1.5rem;
 padding: 14px 20px;
 margin: 8px 0;
 border: none;
 cursor: pointer;
 width: 100%;
 color: white;
-background-color: ${pr => pr.theme.secondaryColor};
+background-color: #857db9;
 &: hover {
     opacity: 0.8;   
 }
 `
 
 const Forms = styled.div`
-
+    h3 {
+        color: white;
+        font-size: 2rem;
+    }
 `
