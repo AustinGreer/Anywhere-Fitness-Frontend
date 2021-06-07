@@ -100,7 +100,6 @@ export default connect(null, {logIn})(Login)
 
 // styled components
 const Section = styled.section`
-    position: absolute;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -139,17 +138,17 @@ const Input = styled.input`
 `
 
 const Button = styled.button`
-font-size: 1.5rem;
-padding: 14px 20px;
-margin: 8px 0;
-border: none;
-cursor: pointer;
-width: 100%;
-color: white;
-background-color: #857db9;
-&: hover {
-    opacity: 0.8;   
-}
+    font-size: 1.5rem;
+    padding: 14px 20px;
+    margin-top: 7%;
+    cursor: pointer;
+    width: 100%;
+    color: white;
+    background-color: #857db9;
+
+    &: hover {
+        opacity: 0.8;   
+    }
 `
 
 const Forms = styled.div`
