@@ -61,8 +61,10 @@ function Login({logIn}) {
     }
 
     return (
-        <MainDiv>
-            <Container>
+        <Section>
+            <h1>Take Control of Your Fitness Goals Today</h1>
+            <FormContainer>
+                <h2>Login Here</h2>
                 <form onSubmit={handleLogIn}>
                     <Forms>
                         <div className="errors">
@@ -70,14 +72,14 @@ function Login({logIn}) {
                             <div>{formError.password}</div>
                             <div>{formError.phoneNumber}</div>
                         </div>
-                        <Tags>Username</Tags>
+                        <h3>Username</h3>
                         <Input value={form.username}
                             onChange={onChange}
                             name="username"
                             type="text" />
                     </Forms>
                     <Forms>
-                        <Tags>Password</Tags>
+                        <h3>Password</h3>
                         <Input value={form.password}
                             onChange={onChange}
                             name="password"
@@ -85,60 +87,73 @@ function Login({logIn}) {
                     </Forms>
                     <Button disabled={disabled}>Login</Button>
                 </form>
-            </Container>
-        </MainDiv>
+            </FormContainer>
+        </Section>
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        isLoggedIn: state.isLoggedIn
-    }
-}
 
-export default connect(mapStateToProps, {logIn})(Login)
+
+export default connect(null, {logIn})(Login)
 
 
 
 // styled components
-const MainDiv = styled.div`
-background-image: url('https://images.unsplash.com/photo-1603077492340-e6e62b2a688b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');
-padding:20%;
+const Section = styled.section`
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid black;
+    width: 100vw;
+    height: 100vh;
+
+    h1 {
+        font-size: 4rem;
+        width: 30%;
+        text-align: center;
+        font-weight: bold;
+    }
 
 `
 
-const Tags = styled.div`
-font-size: 2rem;
-color: white;
-`
 
-const Container = styled.div`
-padding: 7% 25%;
-background-color: ${pr => pr.theme.primaryColor};
-opacity: 0.9;
+const FormContainer = styled.div`
+    background-color: #242943;
+    opacity: 0.9;
+    width: 40%;
+    padding: 5%;
+    border-radius: 10px;
+
+
+h2 {
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+}
 `
 const Input = styled.input`
-width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
+    width: 100%;
+    padding: 12px 20px;
+    margin-bottom: 5%;
 `
 
 const Button = styled.button`
-padding: 14px 20px;
-margin: 8px 0;
-border: none;
-cursor: pointer;
-width: 100%;
-color: white;
-background-color: ${pr => pr.theme.secondaryColor};
-&: hover {
-    opacity: 0.8;   
-}
+    font-size: 1.5rem;
+    padding: 14px 20px;
+    margin-top: 7%;
+    cursor: pointer;
+    width: 100%;
+    color: white;
+    background-color: #857db9;
+
+    &: hover {
+        opacity: 0.8;   
+    }
 `
 
 const Forms = styled.div`
-
+    h3 {
+        color: white;
+        font-size: 2rem;
+    }
 `

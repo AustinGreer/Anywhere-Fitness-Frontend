@@ -47,7 +47,3 @@ const StyledSection = styled.section`
         margin-top: 4%;
     }
 `
-const StyledInfo = styled.section`
-    background: #242943;
-    color: white;
-`

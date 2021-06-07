@@ -16,7 +16,7 @@ function NavBar({isLoggedIn, logOut}) {
     
     return (
         <StyledContainer>
-            <h1>Anywhere Fitness</h1>
+            <Link to='/'>Anywhere Fitness</Link>
             <StyledNav>
                 <Link to="/">Home</Link>
                 { !isLoggedIn && 
@@ -47,13 +47,14 @@ const StyledContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     background: #242943;
     color: white;
     width: 100%;
 
-    h1 {
+    a {
         margin-left: 3%;
+        height: 8vh;
     }
 `
 
