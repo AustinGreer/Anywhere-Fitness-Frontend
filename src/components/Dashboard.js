@@ -6,8 +6,6 @@ import { getClasses } from "../store";
 import Class from "./Class";
 
 function Dashboard(props) {
-  console.log(props.currentUser.auth_code)
-
   useEffect(() => {
     props.getClasses();
   }, []);

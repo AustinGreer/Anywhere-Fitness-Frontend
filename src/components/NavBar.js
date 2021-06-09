@@ -11,7 +11,7 @@ function NavBar({isLoggedIn, logOut}) {
     const handleLogOut = (e) => {
         window.localStorage.removeItem('token')
         logOut()
-        push('/signup')
+        push('/login')
     }
     
     return (
