@@ -42,7 +42,6 @@ export const logIn = (newUser) => (dispatch) => {
   axios
     .post('https://tt-33-anywhere-fitness.herokuapp.com/auth/login', newUser)
     .then(res => {
-      console.log(res)
       window.localStorage.setItem('token', res.data.token)
       dispatch({type: LOG_IN_SUCCESS, payload: {isLoggedIn: true, currentUser:res.data.data}})
     })

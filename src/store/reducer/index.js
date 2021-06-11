@@ -20,7 +20,7 @@ const initialState = {
   addClass: [],
   deleteClass: [],
   editClass: [],
-  isLoggedin: false,
+  isLoggedIn: false,
   currentUser: {
     auth_code: null,
     user_id: 0,
@@ -62,7 +62,7 @@ export function rootReducer(state = initialState, action) {
     case LOG_OUT_SUCCESS:
       return {
         ...state,
-        isLoggedin: action.payload
+        isLoggedIn: action.payload,
       }
 
     case GET_CLASSES_START:
