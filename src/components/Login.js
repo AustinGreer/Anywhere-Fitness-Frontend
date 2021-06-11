@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { logIn } from '../store';
 import schema from '../validation/LoginSchema';
 import styled from 'styled-components';
+import axios from 'axios';
 
 
 
@@ -56,6 +57,7 @@ function Login({logIn}) {
 
     const handleLogIn = (e) => {
         e.preventDefault();
+        axios.get("https://tt-33-anywhere-fitness.herokuapp.com/api/users")
         logIn(form)
         push('/dashboard')
     }
@@ -83,7 +85,7 @@ function Login({logIn}) {
                         <Input value={form.password}
                             onChange={onChange}
                             name="password"
-                            type="text" />
+                            type="password" />
                     </Forms>
                     <Button disabled={disabled}>Login</Button>
                 </form>
@@ -135,6 +137,7 @@ const Input = styled.input`
     width: 100%;
     padding: 12px 20px;
     margin-bottom: 5%;
+    font-size: 1.3rem;
 `
 
 const Button = styled.button`

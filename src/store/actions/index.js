@@ -42,17 +42,17 @@ export const logIn = (newUser) => (dispatch) => {
   axios
     .post('https://tt-33-anywhere-fitness.herokuapp.com/auth/login', newUser)
     .then(res => {
-      dispatch({type: LOG_IN_SUCCESS, payload: res.data.data})
       window.localStorage.setItem('token', res.data.token)
+      dispatch({type: LOG_IN_SUCCESS, payload: {isLoggedIn: true, currentUser:res.data.data}})
     })
     .catch(err => {
-      dispatch({type: LOG_IN_FAILURE, payload: err.message})
+      dispatch({type: LOG_IN_FAILURE, payload: {isLoggedIn: false, errors: err.message}})
     })
 }
 
 // this action allows for a user who is currently logged in to logout
 export const logOut = () => {
-  return {type: LOG_OUT_SUCCESS}
+  return {type: LOG_OUT_SUCCESS, payload: false}
 }
 
 // GYM CLASSES ACTIONS

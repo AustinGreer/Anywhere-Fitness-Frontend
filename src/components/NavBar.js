@@ -11,7 +11,6 @@ function NavBar({isLoggedIn, logOut}) {
     const handleLogOut = (e) => {
         window.localStorage.removeItem('token')
         logOut()
-        push('/signup')
     }
     
     return (
@@ -22,7 +21,7 @@ function NavBar({isLoggedIn, logOut}) {
                 { !isLoggedIn && 
                     <Link to="/login">Login</Link>}
                 {isLoggedIn ? 
-                    <Link onClick={handleLogOut}>Log Out</Link>
+                    <Link onClick={handleLogOut} to='/login'>Log Out</Link>
                     :
                     <Link to="/signup">Sign Up</Link>}
                 { isLoggedIn && 
