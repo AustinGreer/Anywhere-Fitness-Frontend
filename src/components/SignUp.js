@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { addUser } from '../store';
-import schema from '../validation/LoginSchema';
-import * as yup from 'yup';
 import styled from 'styled-components';
 
 
@@ -13,123 +11,113 @@ const initialSignUpValues = {
     auth_code: ''
 }
 
-const initialErrorValues = {
-    username: '',
-    password: '',
-    auth_code: ''
-}
-
 function SignUp({addUser}) {
     const [signUpValues, setSignUpValues] = useState(initialSignUpValues)
-    const [errorValues, setErrorValues] = useState(initialErrorValues)
     const { push } = useHistory();
     
-    const onChange = (event) => {
+    const handleChange = (event) => {
         const { name, value } = event.target;
-        inputChange(name, value);
-    }
-    
-    const inputChange = (name, value) => {
-
-        yup.reach(schema, name)
-            .validate(value)
-            .then(() => {
-                setErrorValues({ ...errorValues, [name]: '' })
-            })
-            .catch((err) => {
-                setErrorValues({ ...errorValues, [name]: err.errors[0] })
-            })
-
         setSignUpValues({ ...signUpValues, [name]: value })
     }
+    
 
     const handleSignUp = (e) => {
         e.preventDefault();
         addUser(signUpValues)
-        push('/login')
     }
 
     return (
-        <MainDiv>
-            <Container>
-                <Title>Sign Up</Title>
-                <div className="errors">
-                                <div>{errorValues.username}</div>
-                                <div>{errorValues.password}</div>
-                            </div>
-                <form className = 'form container' onSubmit={handleSignUp}>
-                    <Tags>Username:
-                        <Input 
-                            type = 'text'
-                            value = {signUpValues.username}
-                            onChange = {onChange}
-                            name = 'username'
-                        />
-                    </Tags>
-                    <Tags>Password:
-                        <Input 
-                            type = 'password'
-                            value = {signUpValues.password}
-                            onChange = {onChange}
-                            name = 'password'
-                        />
-                    </Tags>
-                    <Tags>Instructor Code:
-                        <Input
-                            type='text'
-                            name='auth_code'
-                            onChange={onChange}
-                            value={signUpValues.auth_code}
-                        />
-                    </Tags>
-                    <Button>Sign Up Now!</Button>
-                </form>
-            </Container>
-        </MainDiv>
+        <Section>
+            <h1>Join Anywhere Fitness and Begin Changing Your Life Today</h1>
+            <form onSubmit={handleSignUp}>
+                <h2>Sign Up Here</h2>
+
+                <h3>Username</h3>
+                <input
+                    name='username'
+                    type='text'
+                    value={signUpValues.username}
+                    onChange={handleChange}
+                />
+
+                <h3>Password</h3>
+                <input
+                    name='password'
+                    type='text'
+                    value={signUpValues.password}
+                    onChange={handleChange}
+                />
+
+                <h3>Instructor Code</h3>
+                <input
+                    name='auth_code'
+                    type='text'
+                    value={signUpValues.auth_code}
+                    onChange={handleChange}
+                />
+
+                <button>Submit</button>
+            </form>
+        </Section>
     )
 }
 
 export default connect(null, {addUser})(SignUp)
 
 // styled components
-const MainDiv = styled.div`
-background-image: url('https://images.unsplash.com/photo-1603077492340-e6e62b2a688b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');
-padding:20%;
-`
+const Section = styled.section`
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid black;
+    width: 100vw;
+    height: 100vh;
 
-const Title = styled.h1`
-font-size: 3rem;
-`
+    h1 {
+        font-size: 3.5rem;
+        width: 30%;
+        text-align: center;
+        font-weight: bold;
+    }
 
-const Tags = styled.label`
-font-size: 2rem;
-color: white;
-`
+    form {
+        background-color: #242943;
+        opacity: 0.9;
+        width: 40%;
+        padding: 5%;
+        border-radius: 10px;
+        margin-top: 4%;
+    }
 
-const Container = styled.div`
-padding: 7% 25%;
-background-color: ${pr => pr.theme.primaryColor};
-opacity: 0.9;
+    h2 {
+        color: white;
+        font-size: 3rem;
+        text-align: center;
+    }
 
-`
-const Input = styled.input`
-width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-`
+    h3 {
+        color: white;
+        font-size: 2rem;
+    }
 
-const Button = styled.button`
-padding: 14px 20px;
-margin: 8px 0;
-border: none;
-cursor: pointer;
-width: 100%;
-color: white;
-background-color: ${pr => pr.theme.secondaryColor};
-&: hover {
-    opacity: 0.8;
-}
+    input {
+        width: 100%;
+        padding: 12px 20px;
+        margin-bottom: 5%;
+        font-size: 1.3rem;
+    }
+
+    button {
+        font-size: 1.5rem;
+        padding: 14px 20px;
+        margin-top: 7%;
+        cursor: pointer;
+        width: 100%;
+        color: white;
+        background-color: #857db9;
+
+        &: hover {
+            opacity: 0.8;   
+        }
+    }
 `
