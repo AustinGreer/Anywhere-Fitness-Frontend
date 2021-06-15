@@ -120,4 +120,27 @@ const Section = styled.section`
             opacity: 0.8;   
         }
     }
+
+    @media (max-width: 912px) {
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin-top: 4%;
+        }
+
+        input {
+            padding: 3%;
+        }
+
+        button {
+            padding: 3%;
+        }
+    }
 `
