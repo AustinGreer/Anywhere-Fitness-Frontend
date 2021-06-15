@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { addUser } from '../store';
 import styled from 'styled-components';
 
@@ -13,7 +12,6 @@ const initialSignUpValues = {
 
 function SignUp({addUser}) {
     const [signUpValues, setSignUpValues] = useState(initialSignUpValues)
-    const { push } = useHistory();
     
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -69,12 +67,11 @@ const Section = styled.section`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border: 2px solid black;
     width: 100vw;
     height: 100vh;
 
     h1 {
-        font-size: 3.5rem;
+        font-size: 3rem;
         width: 30%;
         text-align: center;
         font-weight: bold;
@@ -85,6 +82,7 @@ const Section = styled.section`
         opacity: 0.9;
         width: 40%;
         padding: 5%;
+        height: 85%;
         border-radius: 10px;
         margin-top: 4%;
     }
@@ -110,7 +108,7 @@ const Section = styled.section`
     button {
         font-size: 1.5rem;
         padding: 14px 20px;
-        margin-top: 7%;
+        margin-top: 9%;
         cursor: pointer;
         width: 100%;
         color: white;
