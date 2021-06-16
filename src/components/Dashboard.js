@@ -28,6 +28,18 @@ function Dashboard(props) {
   );
 }
 
+
+const mapStateToProps = (state) => {
+  return {
+    classes: state.classes,
+    loading: state.loading,
+    errors: state.errors,
+    currentUser: state.currentUser
+  };
+};
+
+export default connect(mapStateToProps, { getClasses })(Dashboard);
+
 const StyledDashBoard = styled.section`
   color: #242943;
   display: flex;
@@ -56,16 +68,8 @@ const StyledClasses = styled.div`
   align-items: center;
   justify-content: space-evenly;
   row-wrap: wrap;
-  width: 70%;
-`;
+  width: 95%;
+  border-top: 0.2rem dashed #242943;
+  margin-bottom: 2%;
 
-const mapStateToProps = (state) => {
-  return {
-    classes: state.classes,
-    loading: state.loading,
-    errors: state.errors,
-    currentUser: state.currentUser
-  };
-};
-
-export default connect(mapStateToProps, { getClasses })(Dashboard);
+`
