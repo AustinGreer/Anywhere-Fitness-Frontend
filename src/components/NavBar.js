@@ -11,6 +11,7 @@ function NavBar({isLoggedIn, logOut}) {
     const handleLogOut = (e) => {
         window.localStorage.removeItem('token')
         logOut()
+        push('/login')
     }
     
     return (
@@ -50,6 +51,7 @@ const StyledContainer = styled.div`
     background: #242943;
     color: white;
     width: 100%;
+    padding-bottom: 1%;
 
     a {
         margin-left: 3%;
