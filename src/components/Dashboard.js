@@ -28,15 +28,16 @@ function Dashboard(props) {
   );
 }
 
-const StyledDashBoard = styled.div`
+const StyledDashBoard = styled.section`
+  color: #242943;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 4%;
+  padding-top: 10%;
 
   h2 {
     font-size: 4rem;
-    margin-bottom: 3%;
+    margin-bottom: 5%;
   }
 `;
 
