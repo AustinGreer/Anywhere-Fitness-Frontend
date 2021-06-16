@@ -81,34 +81,37 @@ const Section = styled.section`
         background-color: #242943;
         opacity: 0.9;
         width: 40%;
-        padding: 5%;
-        height: 85%;
+        padding-right: 5%;
+        padding-left: 5%;
+        padding-top: 2%;
+        height: 75%;
         border-radius: 10px;
-        margin-top: 4%;
+        margin-top: 7%;
     }
 
     h2 {
         color: white;
-        font-size: 3rem;
+        font-size: 2.5rem;
         text-align: center;
+        margin-top: 3%;
     }
 
     h3 {
         color: white;
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     input {
         width: 100%;
         padding: 12px 20px;
-        margin-bottom: 5%;
-        font-size: 1.3rem;
+        margin-bottom: 3%;
+        font-size: 1rem;
     }
 
     button {
         font-size: 1.5rem;
         padding: 14px 20px;
-        margin-top: 9%;
+        margin-top: 5%;
         cursor: pointer;
         width: 100%;
         color: white;

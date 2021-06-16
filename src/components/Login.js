@@ -125,6 +125,7 @@ const FormContainer = styled.div`
     width: 40%;
     padding: 5%;
     border-radius: 10px;
+    margin-top: 5%;
 
 
 h2 {

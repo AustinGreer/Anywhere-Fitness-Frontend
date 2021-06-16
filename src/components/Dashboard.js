@@ -13,7 +13,7 @@ function Dashboard(props) {
   return (
     <StyledDashBoard>
       <h2>Current Fitness Classes</h2>
-      { props.currentUser.auth_code && <StyledLink to="/classform">Add Class</StyledLink>}
+      { props.currentUser.auth_code && <Link to="/classform" className='add-class'>Add Class</Link>}
       <StyledClasses>
         {props.loading && <h2>Loading Classes...</h2>}
 
@@ -49,17 +49,26 @@ const StyledDashBoard = styled.section`
 
   h2 {
     font-size: 4rem;
-    margin-bottom: 5%;
+  }
+
+  .add-class{
+        border-radius: 0.5rem;
+        width: 10%;
+        text-align: center;
+        background: #242943;
+        opacity: 0.9;
+        color: white;
+        padding: 1%;
+        margin-top: 2%;
+        margin-bottom: 3%;
+
+        &: hover {
+            opacity: 0.8;
+        }
   }
 `;
 
 const StyledLink = styled(Link)`
-  border: 0.15rem solid white;
-  border-radius: 0.5rem;
-  font-size: 1.5rem;
-  margin-top: 2%;
-  margin-bottom: 3%;
-  padding: 1%;
 `;
 
 const StyledClasses = styled.div`
