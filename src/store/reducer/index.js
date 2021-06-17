@@ -63,6 +63,8 @@ export function rootReducer(state = initialState, action) {
       return {
         ...state,
         isLoggedIn: action.payload,
+        classes: state.classes,
+        currentUser: state.currentUser
       }
 
     case GET_CLASSES_START:

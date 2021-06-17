@@ -44,6 +44,7 @@ export default connect(mapStateToProps, {logOut})(NavBar)
 // styled components
 const StyledContainer = styled.div`
     position: fixed;
+    z-index: 1;
     display: flex;
     justify-content: space-between;
     align-items: baseline;

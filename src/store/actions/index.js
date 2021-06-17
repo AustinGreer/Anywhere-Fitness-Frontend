@@ -30,6 +30,7 @@ export const addUser = (newUser) => (dispatch) => {
   axios
     .post('https://tt-33-anywhere-fitness.herokuapp.com/auth/register', newUser)
     .then(res => {
+      console.log(res)
       dispatch({type:SIGN_UP_SUCCESS, payload: res.data[0]})
     })
     .catch(err => {
@@ -42,6 +43,7 @@ export const logIn = (newUser) => (dispatch) => {
   axios
     .post('https://tt-33-anywhere-fitness.herokuapp.com/auth/login', newUser)
     .then(res => {
+      console.log(res)
       window.localStorage.setItem('token', res.data.token)
       dispatch({type: LOG_IN_SUCCESS, payload: {isLoggedIn: true, currentUser:res.data.data}})
     })
