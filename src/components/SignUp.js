@@ -26,7 +26,7 @@ function SignUp({addUser}) {
 
     return (
         <Section>
-            <h1>Join Anywhere Fitness and Begin Changing Your Life Today</h1>
+            <h1>Join Anywhere Fitness and Change Your Life Today</h1>
             <form onSubmit={handleSignUp}>
                 <h2>Sign Up Here</h2>
 
@@ -72,7 +72,7 @@ const Section = styled.section`
 
     h1 {
         font-size: 3rem;
-        width: 30%;
+        width: 25%;
         text-align: center;
         font-weight: bold;
     }

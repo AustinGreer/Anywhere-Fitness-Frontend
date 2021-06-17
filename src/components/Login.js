@@ -86,8 +86,8 @@ const Section = styled.section`
     height: 100vh;
 
     h1 {
-        font-size: 4rem;
-        width: 30%;
+        font-size: 3.5rem;
+        width: 25%;
         text-align: center;
         font-weight: bold;
     }
