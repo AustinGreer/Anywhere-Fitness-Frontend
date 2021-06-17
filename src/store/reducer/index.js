@@ -39,6 +39,19 @@ export function rootReducer(state = initialState, action) {
         currentUser: action.payload,
       };
 
+    case LOG_OUT_SUCCESS:
+      return {
+          ...state,
+          isLoggedIn: action.payload,
+          classes: [],
+          currentUser: {
+            auth_code: null,
+            user_id: 0,
+            user_type: 1,
+            username: ''
+          }
+        }
+
     case LOG_IN_SUCCESS:
       return {
         ...state,
@@ -59,13 +72,6 @@ export function rootReducer(state = initialState, action) {
           errors: action.payload.errors
         }
 
-    case LOG_OUT_SUCCESS:
-      return {
-        ...state,
-        isLoggedIn: action.payload,
-        classes: state.classes,
-        currentUser: state.currentUser
-      }
 
     case GET_CLASSES_START:
       return {
