@@ -1,54 +1,27 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as yup from 'yup';
 import { logIn } from '../store';
-import schema from '../validation/LoginSchema';
 import styled from 'styled-components';
-import axios from 'axios';
 
 
 
-function Login({logIn}) {
+function Login({logIn, isLoggedIn, loading}) {
 
     const formState = {
         username: '',
         password: ''
     }
 
-    const initialFormErrors = {
-        username: '',
-        password: ''
-    }
-
-    const initialDisabled = true;
-
     const [form, setForm] = useState(formState);
-    const [formError, setFormError] = useState(initialFormErrors);
-    const [disabled, setDisabled] = useState(initialDisabled);
 
 
-    const { push } = useHistory();
+    const history = useHistory();
 
     const inputChange = (name, value) => {
 
-        yup.reach(schema, name)
-            .validate(value)
-            .then(() => {
-                setFormError({ ...formError, [name]: '' })
-            })
-            .catch((err) => {
-                setFormError({ ...formError, [name]: err.errors[0] })
-            })
-
-
         setForm({ ...form, [name]: value })
     }
-
-    useEffect(() => {
-        schema.isValid(form)
-            .then(valid => setDisabled(!valid))
-    }, [form])
 
     const onChange = (event) => {
         const { name, value } = event.target;
@@ -57,9 +30,12 @@ function Login({logIn}) {
 
     const handleLogIn = (e) => {
         e.preventDefault();
-        axios.get("https://tt-33-anywhere-fitness.herokuapp.com/api/users")
         logIn(form)
-        push('/dashboard')
+
+        setTimeout(() => {
+            isLoggedIn && history.push('/dashboard')
+        }, 2000)
+        
     }
 
     return (
@@ -69,11 +45,6 @@ function Login({logIn}) {
                 <h2>Login Here</h2>
                 <form onSubmit={handleLogIn}>
                     <Forms>
-                        <div className="errors">
-                            <div>{formError.username}</div>
-                            <div>{formError.password}</div>
-                            <div>{formError.phoneNumber}</div>
-                        </div>
                         <h3>Username</h3>
                         <Input value={form.username}
                             onChange={onChange}
@@ -87,16 +58,21 @@ function Login({logIn}) {
                             name="password"
                             type="password" />
                     </Forms>
-                    <Button disabled={disabled}>Login</Button>
+                    <Button>Login</Button>
                 </form>
             </FormContainer>
         </Section>
     )
 }
 
+const mapStateToProps = (state) => {
+    return {
+        isLoggedIn: state.isLoggedIn,
+        loading: state.loading
+    }
+}
 
-
-export default connect(null, {logIn})(Login)
+export default connect(mapStateToProps, {logIn})(Login)
 
 
 

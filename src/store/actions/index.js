@@ -39,11 +39,10 @@ export const addUser = (newUser) => (dispatch) => {
 }
 
 // post - allows an existing user to login
-export const logIn = (newUser) => (dispatch) => {
+export const logIn = (user) => (dispatch) => {
   axios
-    .post('https://tt-33-anywhere-fitness.herokuapp.com/auth/login', newUser)
+    .post('https://tt-33-anywhere-fitness.herokuapp.com/auth/login', user)
     .then(res => {
-      console.log(res)
       window.localStorage.setItem('token', res.data.token)
       dispatch({type: LOG_IN_SUCCESS, payload: {isLoggedIn: true, currentUser:res.data.data}})
     })

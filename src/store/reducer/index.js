@@ -56,6 +56,7 @@ export function rootReducer(state = initialState, action) {
       return {
         ...state,
         isLoggedIn: action.payload.isLoggedIn,
+        loading: false,
         currentUser: {
           ...state.currentUser,
           auth_code: action.payload.currentUser.auth_code,
@@ -69,6 +70,7 @@ export function rootReducer(state = initialState, action) {
         return {
           ...state,
           isLoggedIn: action.payload.isLoggedIn,
+          loading: false,
           errors: action.payload.errors
         }
 
