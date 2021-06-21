@@ -14,6 +14,7 @@ function Login({logIn, isLoggedIn, loading}) {
     }
 
     const [form, setForm] = useState(formState);
+    const [error, setError] = useState("")
 
 
     const history = useHistory();
@@ -30,12 +31,22 @@ function Login({logIn, isLoggedIn, loading}) {
 
     const handleLogIn = (e) => {
         e.preventDefault();
-        logIn(form)
 
-        setTimeout(() => {
-            isLoggedIn && history.push('/dashboard')
-        }, 2000)
-        
+        if (window.localStorage.getItem("token")) {
+            setError("You can't log in if you are already logged in!")
+            setForm(formState)
+        } else {
+            logIn(form)
+            setForm(formState)
+
+            setTimeout(() => {
+                if (window.localStorage.getItem("token")) {
+                    history.push("/dashboard")
+                } else {
+                    setError("Sorry, you don't have authorization yet.")
+                }
+            }, 1500)
+        }
     }
 
     return (
@@ -60,6 +71,7 @@ function Login({logIn, isLoggedIn, loading}) {
                     </Forms>
                     <Button>Login</Button>
                 </form>
+                {error && <h3>{error}</h3>}
             </FormContainer>
         </Section>
     )
@@ -90,6 +102,12 @@ const Section = styled.section`
         width: 25%;
         text-align: center;
         font-weight: bold;
+    }
+
+    h3 {
+        color: white;
+        font-size: 1.5rem;
+        margin-top: 2%;
     }
 
 `
