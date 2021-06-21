@@ -68,8 +68,6 @@ const StyledDashBoard = styled.section`
   }
 `;
 
-const StyledLink = styled(Link)`
-`;
 
 const StyledClasses = styled.div`
   display: flex;
@@ -78,7 +76,7 @@ const StyledClasses = styled.div`
   justify-content: space-evenly;
   row-wrap: wrap;
   width: 95%;
-  border-top: 0.2rem dashed #242943;
+  border-top: 0.2rem solid #242943;
   margin-bottom: 2%;
 
 `

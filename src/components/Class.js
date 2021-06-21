@@ -12,8 +12,8 @@ function Class(props) {
     return (
         <StyledClass>
             { class_image ? 
-            <img src={class_image} /> : 
-            <img src={deadlift} />}
+            <img src={class_image} alt='class img' /> : 
+            <img src={deadlift} alt="default img" />}
             <div className='text-container'>
                 <h3>Type: {class_type}</h3>
                 <h3>Location: {location}</h3>
@@ -34,7 +34,7 @@ const StyledClass = styled.div`
     align-items: center;
     padding-bottom: 3%;
     font-family: sans-serif;
-    border-bottom: 0.2rem dashed #242943;
+    border-bottom: 0.2rem solid #242943;
 
     img {
         width: 30%;
