@@ -17,8 +17,8 @@ function App() {
       <Switch>
         <PrivateRoute path="/editclass/:id" component={EditClass} />
         <PrivateRoute path="/class/:id" component={ClassInfo} />
-        <PrivateRoute path="/dashboard" component={Dashboard} />
         <PrivateRoute path="/classform" component={ClassForm} />
+        <PrivateRoute path="/dashboard" component={Dashboard} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
         <Route exact path="/" component={Home} />
