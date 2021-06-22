@@ -15,18 +15,6 @@ const initialValues = {
   max_class_size: 0,
 };
 
-const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  padding: 2%;
-  button {
-    width: 20%;
-  }
-  label {
-    padding: 2%;
-  }
-`;
-
 function ClassForm(props) {
   const [values, setValues] = useState(initialValues);
   const history = useHistory();
@@ -48,23 +36,11 @@ function ClassForm(props) {
   };
 
   return (
-    <div>
-      <h1>Class Form</h1>
-      {/* <div className="errors">
-                            <div>{errorValues.username}</div>
-                            <div>{errorValues.password}</div>
-                        </div> */}
-      <StyledForm className="form container" onSubmit={handleSubmit}>
-        {/* <label>Name:
-                    <input
-                        type = 'text'
-                        value = {values.name}
-                        onChange = {onChange}
-                        name = 'name'
-                    />
-                </label> */}
+    <StyledAddClass>
+      <h1>Add a New Class</h1>
+      <form className="form container" onSubmit={handleSubmit}>
         <label>
-          Type:
+          Type: <br />
           <input
             type="text"
             value={values.class_type}
@@ -73,7 +49,7 @@ function ClassForm(props) {
           />
         </label>
         <label>
-          Image:
+          Image: <br />
           <input
             type="text"
             value={values.class_image}
@@ -82,7 +58,7 @@ function ClassForm(props) {
           />
         </label>
         <label>
-          Start Time:
+          Start Time: <br />
           <input
             type="text"
             value={values.start_time}
@@ -91,7 +67,7 @@ function ClassForm(props) {
           />
         </label>
         <label>
-          Duration:
+          Duration: <br />
           <input
             type="text"
             value={values.duration}
@@ -100,7 +76,7 @@ function ClassForm(props) {
           />
         </label>
         <label>
-          Intensity Level:
+          Intensity Level: <br />
           <input
             type="text"
             value={values.intensity_level}
@@ -109,7 +85,7 @@ function ClassForm(props) {
           />
         </label>
         <label>
-          Location:
+          Location: <br />
           <input
             type="text"
             value={values.location}
@@ -118,7 +94,7 @@ function ClassForm(props) {
           />
         </label>
         <label>
-          Attendees:
+          Attendees: <br />
           <input
             type="number"
             value={values.num_of_attendees}
@@ -127,7 +103,7 @@ function ClassForm(props) {
           />
         </label>
         <label>
-          Max Class Size:
+          Max Class Size: <br />
           <input
             type="number"
             value={values.max_class_size}
@@ -136,8 +112,8 @@ function ClassForm(props) {
           />
         </label>
         <button>Add Class</button>
-      </StyledForm>
-    </div>
+      </form>
+    </StyledAddClass>
   );
 }
 
@@ -149,3 +125,55 @@ const mapStatesToProps = (state) => {
 };
 
 export default connect(mapStatesToProps, { addClasses })(ClassForm);
+
+const StyledAddClass = styled.section`
+  padding: 10%;
+  background: #525673;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    color:#EBEEFF;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 5%;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+
+    label {
+      font-size: 1.5rem;
+      color: #EBEEFF;
+      margin-bottom: 3%;
+      text-align: center;
+      width: 40%;
+    }
+
+    input {
+      width: 70%;
+    }
+
+    button {
+      background: #AC5975;
+      color: #EAECFF;
+      font-size: 1.3rem;
+      padding: 10px 20px;
+      width: 18%;
+      border-radius: 10px;
+      border-color: #6F5C82;
+      cursor: pointer;
+
+      :hover {
+        background: #E67E6F;
+      }
+    }
+  }
+`
