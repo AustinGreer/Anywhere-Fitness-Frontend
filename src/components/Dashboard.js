@@ -49,6 +49,8 @@ const StyledDashBoard = styled.section`
 
   h2 {
     font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 2%;
   }
 
   .add-class{
