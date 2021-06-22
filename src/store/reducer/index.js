@@ -85,6 +85,7 @@ export function rootReducer(state = initialState, action) {
       return {
         ...state,
         classes: action.payload,
+        isLoggedIn: true,
         loading: false,
         errors: "",
       };

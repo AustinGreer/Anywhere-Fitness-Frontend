@@ -11,7 +11,7 @@ import { useHistory } from 'react-router-dom'
 function ClassInfo(props) {
 
     const { id } = useParams()
-    const { class_img, class_type, duration, intensity_level, location, max_class_size, num_of_attendees, start_time } = props.classes;
+    const { class_img, class_type, duration, intensity_level, location, max_class_size, num_of_attendees, start_time, loading } = props.classes;
 
     useEffect(() => {
         props.getClassInfo(id)
@@ -27,71 +27,31 @@ function ClassInfo(props) {
     }
 
     return (
-        <StyledContainer>
         <StyledClassInfo>
-            {props.loading ? <h1>Loading Class Info...</h1> : ''}
-            {class_img ? <StyledImg src={class_img} alt={class_type} /> : <StyledImg src={deadlift} alt='default img' />}
-            <div>
-                <h3>Type: {class_type}</h3>
-                <h3>Duration: {duration}</h3>
-                <h3> Intensity Level: {intensity_level}</h3>
-                <h3> Location: {location}</h3>
-                <h3>Maximum Attendees: {max_class_size}</h3>
-                <h3>Current Attendees: {num_of_attendees}</h3>
-                <h3>Start Time: {start_time}</h3>
-            </div>
+                {loading && <h2>Loading...</h2>}
+                <div className="info-container">
+                    {class_img ? <img src={class_img} alt="class img" /> 
+                        : <img src={deadlift} alt="default img" />}
+                        <h1>{class_type}</h1>
+                        <ul>
+                            <li>Duration: {duration}</li>
+                            <li>Intensity Level: {intensity_level}</li>
+                            <li>Location: {location}</li>
+                            <li>Start Time: {start_time}</li>
+                            <li>Current Number of Attendees: {num_of_attendees}</li>
+                            <li>Max Number of Attendees: {max_class_size}</li>
+                        </ul>
+                        <div className="btn-container">
+                            <button className='btn'>Reserve A Spot</button>
+                            {props.currentUser.auth_code && <Link className='btn' to={`/editclass/${id}`}>Edit This Class</Link>}
+                            {props.currentUser.auth_code && <button className='btn' onClick={deleteHandler}>Delete This Class</button>}
+                        </div>
+                </div>
+
+            
         </StyledClassInfo>
-        <div className='btn-container'>
-            <button className='btn'>Reserve A Spot</button>
-            {props.currentUser.auth_code && <Link className='btn' to={`/editclass/${id}`}>Edit This Class</Link>}
-            {props.currentUser.auth_code && <button className='btn' onClick={deleteHandler}>Delete This Class</button>}
-        </div>
-        </StyledContainer>
     )
 }
-
-const StyledContainer = styled.section`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .btn-container {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        margin-bottom: 5%;
-
-        .btn {
-            border: 2px solid white;
-            width: 15%;
-            margin-right: 3%;
-            padding: 1%;
-            background: #242943;
-            color: white;
-            font-size: 1.5rem;
-        }
-    }
-`
-
-const StyledClassInfo = styled.div`
-    border: 0.1rem solid white;
-    border-radius: 0.5rem;
-    width: 90%;
-    margin: 5% auto;
-    display: flex;
-    justify-content: flex-start;
-
-    h3 {
-        font-size: 3rem;
-        margin: 5% 5% 5% 0;
-    }
-`
-
-const StyledImg = styled.img`
-    width: 50%;
-    margin-right: 5%;
-    border-radius: 0.5rem;
-`
 
 const mapStateToProps = state => {
     return {
@@ -104,3 +64,78 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, {getClassInfo, deleteClasses})(ClassInfo)
+
+
+const StyledClassInfo = styled.section`
+    padding-top: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #787B9A;
+    width: 100%;
+    height: 100%;
+
+    .info-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        border-radius: 10px;
+        background: #2D324C;
+        color: #EAECFF;
+        margin-bottom: 7%;
+
+        img {
+            width: 60%;
+            height: 50%;
+            border-radius: 10px;
+            margin-top: 5%;
+            margin-bottom: 5%;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 3%;
+        }
+
+        ul {
+            margin-bottom: 5%;
+        }
+
+        
+        li {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 3%;
+        }
+
+        .btn-container {
+            margin-bottom: 5%;
+            display: flex;
+            width: 90%;
+            justify-content: space-evenly;
+
+            button {
+                background: #6F5C82;
+                color: #EAECFF;
+                font-size: 1.3rem;
+                padding: 2%;
+                width: 30%;
+                border-radius: 10px;
+                border-color: #6F5C82;
+                cursor: pointer;
+            }
+
+            a {
+                background: #6F5C82;
+                color: #EAECFF;
+                font-size: 1.3rem;
+                width: 30%;
+                border-radius: 10px;
+                text-align: center;
+            }
+        }
+    }
+
+`
